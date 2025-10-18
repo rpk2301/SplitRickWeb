@@ -5,14 +5,10 @@ applications:
         preBuild:
           commands: []
         build:
-          commands:
-            # Copy your static files from public/ to the artifact dir
-            - mkdir -p dist
-            - cp -R public/* dist/
+          commands: []   # static site, nothing to build
       artifacts:
-        baseDirectory: dist
+        baseDirectory: public
         files:
           - '**/*'
       cache:
         paths: []
-    appRoot: /
