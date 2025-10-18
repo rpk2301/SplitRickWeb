@@ -1,16 +1,91 @@
-<!doctype html><html lang="en"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Splitrick – Invitation</title>
-<script>
-  // Read ?code= from URL and try to deep-link into your app later
-  const params = new URLSearchParams(location.search);
-  const code = params.get('code');
-  // Example universal link (when you set it up)
-  // location.href = `https://splitrick.app/link?code=${encodeURIComponent(code)}`;
-</script>
-<main style="max-width:720px;margin:40px auto;font:16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto">
-  <h1>You're invited to Splitrick</h1>
-  <p>Invitation code: <b id="c"></b></p>
-  <p>If you have the app installed, open it and enter the code above.</p>
-  <script>document.getElementById('c').textContent = code || '—';</script>
-</main></html>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Splitrick — Group Invitation</title>
+  <meta name="description" content="Join your friends on Splitrick to easily split and settle group expenses.">
+  <style>
+    body {
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: #0f1021;
+      color: #e9eaf6;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.25em;
+      background: linear-gradient(135deg, #6a5cff, #b06ffb);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    p { color: #c8cae6; margin: 0.75em 0 1em; }
+    .code-box {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: linear-gradient(135deg, #6a5cff, #b06ffb);
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(106,92,255,0.35);
+      margin: 16px 0 24px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      background: linear-gradient(135deg, #6a5cff, #b06ffb);
+      color: white;
+      box-shadow: 0 8px 20px rgba(176,111,251,.35);
+      transition: transform .08s ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px); }
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      color: #a7abbd;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>You're invited to Splitrick</h1>
+    <p>Join your friends to split and settle expenses easily.</p>
+    <div id="codeDisplay" class="code-box">—</div>
+    <p>Open the Splitrick app and enter this invitation code to join the group instantly.</p>
+    <a href="#" id="openAppBtn" class="cta-btn">Open in App</a>
+  </main>
+  <footer>
+    <p>© <script>document.write(new Date().getFullYear())</script> Splitrick — Simple group expenses</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const code = params.get('code');
+    const codeEl = document.getElementById('codeDisplay');
+    const appBtn = document.getElementById('openAppBtn');
+
+    if (code) {
+      codeEl.textContent = code;
+      appBtn.href = `https://splitrick.app/link?code=${encodeURIComponent(code)}`;
+    }
+  </script>
+</body>
+</html>
