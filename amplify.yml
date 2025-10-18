@@ -12,3 +12,12 @@ applications:
           - '**/*'
       cache:
         paths: []
+      customHeaders:
+        - pattern: '/apple-app-site-association'
+          headers:
+            - key: 'Content-Type'
+              value: 'application/json'
+        - pattern: '/.well-known/apple-app-site-association'
+          headers:
+            - key: 'Content-Type'
+              value: 'application/json'
