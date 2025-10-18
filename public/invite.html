@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Splitrick – Invitation</title>
+<script>
+  // Read ?code= from URL and try to deep-link into your app later
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  // Example universal link (when you set it up)
+  // location.href = `https://splitrick.app/link?code=${encodeURIComponent(code)}`;
+</script>
+<main style="max-width:720px;margin:40px auto;font:16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto">
+  <h1>You're invited to Splitrick</h1>
+  <p>Invitation code: <b id="c"></b></p>
+  <p>If you have the app installed, open it and enter the code above.</p>
+  <script>document.getElementById('c').textContent = code || '—';</script>
+</main></html>

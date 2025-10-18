@@ -1,0 +1,32 @@
+[
+    {
+      "source": "/i/<code>",
+      "target": "/invite.html?code=<code>",
+      "status": "302",
+      "condition": null
+    },
+    {
+      "source": "/terms",
+      "target": "/terms.html",
+      "status": "200",
+      "condition": null
+    },
+    {
+      "source": "/privacy",
+      "target": "/privacy.html",
+      "status": "200",
+      "condition": null
+    },
+    {
+      "source": "/",
+      "target": "/index.html",
+      "status": "200",
+      "condition": null
+    },
+    {
+      "source": "<*>",
+      "target": "/index.html",
+      "status": "200",
+      "condition": null
+    }
+  ]
