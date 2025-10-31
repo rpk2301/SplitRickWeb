@@ -23,12 +23,30 @@
     html, body { height: 100%; }
     body {
       margin: 0;
-      background: radial-gradient(1200px 600px at 0% 0%, rgba(176,111,251,.25), transparent 60%),
-                  radial-gradient(900px 500px at 100% 0%, rgba(106,92,255,.25), transparent 60%),
-                  var(--bg);
+      background: var(--bg);
       color: var(--text);
       font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      position: relative;
+      overflow-x: hidden;
     }
+    /* Non-repeating decorative blobs */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20% -10% -10% -10%;
+      z-index: -1;
+      background:
+        radial-gradient(1200px 700px at -10% -20%, rgba(176,111,251,.28), transparent 60%),
+        radial-gradient(900px 600px at 110% -10%, rgba(106,92,255,.24), transparent 60%),
+        radial-gradient(800px 500px at 100% 110%, rgba(106,92,255,.16), transparent 60%);
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(1200px 800px at 50% 40%, rgba(0,0,0,.9), transparent 70%);
+              mask-image: radial-gradient(1200px 800px at 50% 40%, rgba(0,0,0,.9), transparent 70%);
+    }
+    .gallery { margin-top: 48px; }
+    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .shot { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 10px; }
+    .shot img { width: 100%; height: auto; display: block; border-radius: 10px; }
     .wrap {
       max-width: 860px;
       margin: 0 auto;
@@ -93,7 +111,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img src="../splitrick.png" alt="SplitRick App Icon" class="logo">
         <div class="title">Splitrick</div>
       </div>
     </header>
@@ -102,23 +120,72 @@
       <h1>Settle up without the spreadsheet</h1>
       <p>Splitrick makes it effortless to track, split, and settle expenses with friends, roommates, and groups. Secure sign‑in with one‑time passcodes. No marketing texts—ever.</p>
       <div class="cta-row">
-        <a class="btn primary" href="/terms">Terms &amp; Conditions</a>
+        <a class="btn primary" href="#gallery">See the App</a>
+        <a class="btn" href="#developers">Meet the Developers</a>
+        <a class="btn" href="#contact">Contact Us</a>
+        <a class="btn" href="/terms">Terms &amp; Conditions</a>
         <a class="btn" href="/privacy">Privacy Policy</a>
       </div>
       <div class="grid">
         <div class="card">
-          <h3>Real‑time updates</h3>
-          <p>New transactions appear instantly across the group.</p>
+          <h3>Transaction Insights</h3>
+          <p>Gain a clear view of your group’s spending habits and shared expenses. Splitrick automatically summarizes transactions, highlights trends, and helps you understand how money flows within your group.</p>
         </div>
         <div class="card">
-          <h3>OTP‑only SMS</h3>
-          <p>We text one‑time passcodes for authentication. Reply STOP to opt out, HELP for help.</p>
+          <h3>Real‑time Updates</h3>
+          <p>Every expense or change in your group ledger is reflected instantly across all connected users—no refreshes or delays. Whether you’re adding a new bill or settling up, everyone stays perfectly in sync.</p>
         </div>
         <div class="card">
-          <h3>Private by design</h3>
-          <p>Your data is used only to run the app—no ads, no reselling.</p>
+          <h3>Join Your Friends</h3>
+          <p>Splitrick makes it effortless for families and friends to keep every shared expense perfectly in sync. Whether it’s planning a trip, splitting rent, or managing daily costs, everyone always sees the same up-to-date balances—no confusion, no missed payments.</p>
         </div>
       </div>
+    </section>
+
+    <section class="about" aria-label="About Splitrick" style="margin-top: 48px;">
+      <h2>About Splitrick</h2>
+      <p>Splitrick is a secure expense sharing and group finance platform that lets users easily split bills, track spending, and settle payments in real time. Our mission is to make financial collaboration between friends, families, and roommates effortless, transparent, and privacy‑focused.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Security First</h3>
+          <p>We take security seriously—your personal and financial data is encrypted, protected, and never shared with anyone. Splitrick ensures that only you and your chosen group members can view expense information.</p>
+        </div>
+        <div class="card">
+          <h3>Built by Users, for Users</h3>
+          <p>Splitrick is built by a team of engineers with experience in fintech and cloud infrastructure, ensuring a reliable experience for every user.</p>
+        </div>
+        <div class="card">
+          <h3>Free, Always</h3>
+          <p>Splitrick is—and will always be—completely free to use. We believe that managing shared expenses shouldn’t come with extra costs or subscriptions. There are no hidden fees, no premium tiers, and no ads—just a simple, transparent way to keep group finances organized. Our goal is to make fair expense tracking accessible to everyone, whether you’re splitting rent, planning trips, or managing day-to-day bills with friends and family.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="developers" class="developers" style="margin-top: 48px; text-align: center;">
+      <h2>Meet the Developers</h2>
+      <p>Splitrick is built and maintained by a passionate team of engineers dedicated to making expense sharing simple and secure.</p>
+      <p>
+        <a href="https://www.linkedin.com/in/rickykyte/" target="_blank" rel="noopener noreferrer" class="btn primary">Connect on LinkedIn</a>
+      </p>
+    </section>
+
+    <section id="gallery" class="gallery" aria-label="App Screenshots">
+      <h2 style="margin:0 0 10px;">See the App</h2>
+      <p class="muted" style="margin:0 0 16px; color: var(--muted);">
+        Explore Splitrick’s intuitive design — from adding expenses to splitting bills and tracking payments. Every screen is built for clarity and speed, helping you and your friends stay organized effortlessly.
+      </p>
+      <div class="shots">
+        <div class="shot"><img src="/splitrickaddexpense.png" alt="Add Expense in Splitrick"></div>
+        <div class="shot"><img src="/splitricksplit.png" alt="Split View in Splitrick"></div>
+        <div class="shot"><img src="/splitricksplitexpense.png" alt="Split Expense screen in Splitrick"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" style="margin-top: 48px; text-align: center;">
+      <h2>Contact</h2>
+      <p>Have questions or need help with registration? Reach out to our chief developer at 
+        <a href="mailto:Richardkyte1@yahoo.com">Richardkyte1@yahoo.com</a>.
+      </p>
     </section>
 
     <footer>
