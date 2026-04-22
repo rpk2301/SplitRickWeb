@@ -1,91 +1,211 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Splitrick — Group Invitation</title>
-  <meta name="description" content="Join your friends on Splitrick to easily split and settle group expenses.">
+  <title>Join a SplitRick group</title>
+
+  <!-- Basic meta / SEO -->
+  <meta name="description" content="You've been invited to join a group on SplitRick. Split and settle group expenses effortlessly.">
+  <meta name="theme-color" content="#E07856">
+
+  <!-- Open Graph — this is what iMessage, Slack, WhatsApp, Messenger,
+       Twitter/X, and most other link-unfurlers read to build the rich
+       preview card. Keep og:title + og:description short; most clients
+       truncate around 60 chars for title. -->
+  <meta property="og:site_name" content="SplitRick">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://splitrick.click/invite.html">
+  <meta property="og:title" content="Join my group on SplitRick">
+  <meta property="og:description" content="Tap to join and start splitting expenses together.">
+  <meta property="og:image" content="https://splitrick.click/og-invite.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Join a group on SplitRick">
+
+  <!-- Twitter card — same story, different tag names. -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Join my group on SplitRick">
+  <meta name="twitter:description" content="Tap to join and start splitting expenses together.">
+  <meta name="twitter:image" content="https://splitrick.click/og-invite.png">
+
+  <!-- Apple's smart app banner — when the page is visited on iOS Safari,
+       Safari shows a "Open in App" banner at the top automatically.
+       Replace APP_ID with the App Store numeric ID once the app is live. -->
+  <meta name="apple-itunes-app" content="app-id=APP_ID">
+
   <style>
+    :root {
+      --bg: #0C1413;          /* teal-tinted near-black (matches app) */
+      --card: #152220;
+      --border: #1F3330;
+      --accent: #E07856;      /* terracotta */
+      --accent-deep: #C56340;
+      --sage: #B5C18E;
+      --sand: #E8E4D9;
+      --muted: #9A948A;
+      --subtle: #5F5A52;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: #0f1021;
-      color: #e9eaf6;
+      background: var(--bg);
+      color: var(--sand);
       margin: 0;
       padding: 40px 20px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     main {
-      max-width: 720px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
+      max-width: 520px;
+      margin: auto;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       padding: 40px 32px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
       text-align: center;
     }
     h1 {
-      font-size: 2rem;
-      margin-bottom: 0.25em;
-      background: linear-gradient(135deg, #6a5cff, #b06ffb);
-      -webkit-background-clip: text;
-      color: transparent;
+      font-size: 1.9rem;
+      margin: 0 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
-    p { color: #c8cae6; margin: 0.75em 0 1em; }
-    .code-box {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+    p { color: var(--muted); margin: 0.5em 0; }
+    .logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 20px;
+      border-radius: 20px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1.7rem;
       color: #fff;
-      background: linear-gradient(135deg, #6a5cff, #b06ffb);
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(106,92,255,0.35);
-      margin: 16px 0 24px;
+      box-shadow: 0 10px 30px rgba(224, 120, 86, 0.35);
+    }
+    .code-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+      color: var(--subtle);
+      font-weight: 800;
+      margin-top: 28px;
+    }
+    .code-box {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--sand);
+      margin: 8px 0 28px;
+      font-variant-numeric: tabular-nums;
     }
     .cta-btn {
       display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
       text-decoration: none;
-      font-weight: 600;
-      background: linear-gradient(135deg, #6a5cff, #b06ffb);
-      color: white;
-      box-shadow: 0 8px 20px rgba(176,111,251,.35);
-      transition: transform .08s ease;
+      font-weight: 700;
+      font-size: 15px;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(224, 120, 86, 0.35);
+      transition: transform .08s ease, background .15s ease;
+      border: 0;
+      cursor: pointer;
     }
-    .cta-btn:hover { transform: translateY(-2px); }
+    .cta-btn:hover { transform: translateY(-1px); background: var(--accent-deep); }
+    .cta-btn:disabled { opacity: 0.4; cursor: default; transform: none; }
+    .hint {
+      color: var(--subtle);
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+    .hint a { color: var(--accent); text-decoration: none; font-weight: 600; }
     footer {
       text-align: center;
       margin-top: 32px;
-      color: #a7abbd;
-      font-size: 0.875rem;
+      color: var(--subtle);
+      font-size: 0.8rem;
     }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--sand); }
   </style>
 </head>
 <body>
   <main>
-    <h1>You're invited to Splitrick</h1>
-    <p>Join your friends to split and settle expenses easily.</p>
+    <div class="logo">S</div>
+    <h1>You're invited to SplitRick</h1>
+    <p>Tap to open the app and join this group instantly.</p>
+
+    <div class="code-label">Invite code</div>
     <div id="codeDisplay" class="code-box">—</div>
-    <p>Open the Splitrick app and enter this invitation code to join the group instantly.</p>
-    <a href="#" id="openAppBtn" class="cta-btn">Open in App</a>
+
+    <a href="#" id="openAppBtn" class="cta-btn">Open in SplitRick</a>
+
+    <p class="hint">
+      Don't have the app?
+      <a id="storeLink" href="https://apps.apple.com/app/splitrick/idAPP_ID">Get it on the App Store</a>
+    </p>
   </main>
+
   <footer>
-    <p>© <script>document.write(new Date().getFullYear())</script> Splitrick — Simple group expenses</p>
+    <p>© <script>document.write(new Date().getFullYear())</script> SplitRick · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
   </footer>
 
   <script>
-    const params = new URLSearchParams(location.search);
-    const code = params.get('code');
-    const codeEl = document.getElementById('codeDisplay');
-    const appBtn = document.getElementById('openAppBtn');
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const code = (params.get('code') || '').replace(/[^0-9]/g, '').slice(0, 6);
 
-    if (code) {
+      const codeEl = document.getElementById('codeDisplay');
+      const appBtn = document.getElementById('openAppBtn');
+
+      if (!code) {
+        // Missing/invalid code — disable the button and bail.
+        codeEl.textContent = '—';
+        appBtn.textContent = 'Invalid invite';
+        appBtn.setAttribute('disabled', 'disabled');
+        appBtn.setAttribute('aria-disabled', 'true');
+        appBtn.href = '#';
+        return;
+      }
+
       codeEl.textContent = code;
-      appBtn.href = `https://splitrick.app/link?code=${encodeURIComponent(code)}`;
-    }
+
+      // The "Open in SplitRick" button triggers the app's custom URL
+      // scheme. If the app is installed, iOS intercepts and opens it.
+      // If not, nothing happens and we fall back to the App Store after
+      // a short timeout.
+      const appURL = 'splitrick://join/' + encodeURIComponent(code);
+      const storeURL = document.getElementById('storeLink').getAttribute('href');
+      appBtn.href = appURL;
+
+      appBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const now = Date.now();
+        // Try to hand off to the app.
+        window.location = appURL;
+        // If we're still here 1.5s later, the app isn't installed —
+        // send the user to the App Store instead. Don't redirect if
+        // the page became hidden (app opened) in the meantime.
+        setTimeout(function () {
+          if (Date.now() - now < 1800 && !document.hidden) {
+            window.location = storeURL;
+          }
+        }, 1500);
+      });
+
+      // Optional auto-attempt: on first paint, try the Universal Link
+      // path implicitly. If the app is installed and Universal Links
+      // are working, iOS already would have opened it before this page
+      // even loaded — so we only get here when the user needs help.
+    })();
   </script>
 </body>
 </html>

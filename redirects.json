@@ -6,6 +6,12 @@
       "condition": null
     },
     {
+      "source": "/invite/<code>",
+      "target": "/invite.html?code=<code>",
+      "status": "302",
+      "condition": null
+    },
+    {
       "source": "/terms",
       "target": "/terms.html",
       "status": "200",
