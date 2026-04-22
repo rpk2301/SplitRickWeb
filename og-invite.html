@@ -4,24 +4,45 @@
   invite.html. NOT deployed publicly; kept in the repo so the design
   is version-controlled and easy to re-export.
 
-  To regenerate the PNG (from repo root):
+  Headless Chrome at --window-size=1200,630 clips the footer for
+  reasons that aren't obvious (viewport vs. body flex sizing). Work
+  around it by rendering at 1200×1000 and cropping the top 630 with
+  a tiny Swift helper. From repo root:
+
     /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-      --headless --disable-gpu \
-      --screenshot=public/og-invite.png \
-      --window-size=1200,630 \
+      --headless --disable-gpu --hide-scrollbars \
+      --screenshot=/tmp/og-large.png \
+      --window-size=1200,1000 \
       "file://$PWD/og-invite.html"
+
+    swift - <<'EOF'
+    import Foundation
+    import AppKit
+    let src = NSImage(contentsOfFile: "/tmp/og-large.png")!
+    let rep = src.representations.first as! NSBitmapImageRep
+    let cropped = rep.cgImage!.cropping(
+        to: CGRect(x: 0, y: 0, width: 1200, height: 630))!
+    let data = NSBitmapImageRep(cgImage: cropped)
+        .representation(using: .png, properties: [:])!
+    try! data.write(to: URL(fileURLWithPath: "public/og-invite.png"))
+    EOF
 -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <style>
-    /* Fix the body to exactly 1200x630 so headless Chrome captures
-       the card pixel-perfect with no scrollbars or padding. */
-    html, body {
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
       margin: 0;
       padding: 0;
       width: 1200px;
       height: 630px;
+      min-height: 630px;
+      max-height: 630px;
       overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
                    'Segoe UI', Roboto, Inter, Helvetica, Arial, sans-serif;
@@ -29,38 +50,36 @@
       color: #E8E4D9;
     }
     body {
-      /* Layered radial gradients on a teal-tinted near-black base. */
+      /* Single warm highlight up top, flat dark below — keeps the
+         footer strip legible instead of washed out by a second
+         gradient. */
       background:
-        radial-gradient(1000px 700px at 80% 10%, rgba(224,120,86,.30), transparent 60%),
-        radial-gradient(1100px 700px at 10% 100%, rgba(15,61,62,.80), transparent 60%),
+        radial-gradient(1400px 900px at 50% 10%, rgba(224,120,86,.22), transparent 60%),
         #0C1413;
-      display: grid;
-      grid-template-columns: 320px 1fr;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Hero takes all remaining space above the footer */
+    .hero {
+      height: 530px;
+      flex: 0 0 530px;
+      display: flex;
       align-items: center;
-      gap: 64px;
+      gap: 52px;
       padding: 0 96px;
       box-sizing: border-box;
     }
-    .logo-wrap {
-      display: grid;
-      place-items: center;
-    }
     .logo-img {
-      width: 320px;
-      height: 320px;
+      width: 280px;
+      height: 280px;
+      flex-shrink: 0;
       object-fit: contain;
       border-radius: 64px;
-      /* Soft terracotta glow under the logo */
       filter: drop-shadow(0 20px 60px rgba(224, 120, 86, 0.35));
-    }
-    .copy {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
     }
     h1 {
       margin: 0;
-      font-size: 72px;
+      font-size: 68px;
       line-height: 1.05;
       font-weight: 900;
       letter-spacing: -0.025em;
@@ -69,21 +88,45 @@
     h1 .accent {
       color: #E07856;
     }
-    .domain {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #5F5A52;
+    /* Footer pinned at the bottom of the flex column. */
+    .footer {
+      flex: 0 0 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 96px;
+      box-sizing: border-box;
+      border-top: 2px solid rgba(224, 120, 86, 0.55);
+      background: rgba(224, 120, 86, 0.06);
+    }
+    .wordmark {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.20em;
+      color: #E07856;
       text-transform: uppercase;
+    }
+    .cta {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #E8E4D9;
+    }
+    .cta .arrow {
+      color: #E07856;
+      margin-left: 14px;
+      font-weight: 900;
     }
   </style>
 </head>
 <body>
-  <div class="logo-wrap">
+  <div class="hero">
     <img class="logo-img" src="public/splitrick.png" alt="SplitRick">
-  </div>
-  <div class="copy">
     <h1>You've been <span class="accent">invited</span><br>to join a group!</h1>
+  </div>
+  <div class="footer">
+    <div class="wordmark">SplitRick</div>
+    <div class="cta">Tap to join <span class="arrow">&rarr;</span></div>
   </div>
 </body>
 </html>
