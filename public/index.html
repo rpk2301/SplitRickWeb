@@ -3,198 +3,407 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Splitrick — Simple group expenses</title>
-  <meta name="description" content="Splitrick helps friends and groups track, split, and settle expenses—fast.">
-  <meta property="og:title" content="Splitrick — Simple group expenses">
+  <title>SplitRick — Group expenses without the math</title>
+  <meta name="description" content="Track shared expenses with friends, roommates, and trip groups. Log who paid, split it however makes sense, and settle up in a tap.">
+  <meta name="theme-color" content="#0C1413">
+
+  <meta property="og:title" content="SplitRick">
+  <meta property="og:description" content="Group expenses without the math.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#6a5cff">
+  <meta property="og:url" content="https://splitrick.click">
+
+  <link rel="icon" href="/splitrick.png" type="image/png">
+
   <style>
+    /* Terracotta × teal palette — shared with the iOS app. Tokens are
+       kept minimal on purpose; the layout doesn't need more than this. */
     :root {
-      --bg: #0f1021;
-      --card: #14162b;
-      --text: #e9eaf6;
-      --muted: #a7abbd;
-      --accent1: #6a5cff; /* indigo */
-      --accent2: #b06ffb; /* purple */
-      --radius: 14px;
+      --bg:         #0C1413;
+      --surface:    #0F1B19;
+      --card:       #152220;
+      --border:     #1F3330;
+      --accent:     #E07856;
+      --accent-deep:#C56340;
+      --sage:       #B5C18E;
+      --sand:       #E8E4D9;
+      --muted:      #9A948A;
+      --subtle:     #5F5A52;
+      --teal-deep:  #0F3D3E;
     }
+
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
       margin: 0;
       background: var(--bg);
-      color: var(--text);
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      position: relative;
+      color: var(--sand);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
-    /* Non-repeating decorative blobs */
+
+    /* Subtle single accent-glow top-right — replaces the four stacked
+       purple blobs from the old template. */
     body::before {
       content: "";
       position: fixed;
-      inset: -20% -10% -10% -10%;
-      z-index: -1;
-      background:
-        radial-gradient(1200px 700px at -10% -20%, rgba(176,111,251,.28), transparent 60%),
-        radial-gradient(900px 600px at 110% -10%, rgba(106,92,255,.24), transparent 60%),
-        radial-gradient(800px 500px at 100% 110%, rgba(106,92,255,.16), transparent 60%);
+      top: -300px; right: -200px;
+      width: 800px; height: 800px;
+      background: radial-gradient(closest-side, rgba(224,120,86,0.18), transparent 70%);
       pointer-events: none;
-      -webkit-mask-image: radial-gradient(1200px 800px at 50% 40%, rgba(0,0,0,.9), transparent 70%);
-              mask-image: radial-gradient(1200px 800px at 50% 40%, rgba(0,0,0,.9), transparent 70%);
+      z-index: -1;
     }
-    .gallery { margin-top: 48px; }
-    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .shot { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 10px; }
-    .shot img { width: 100%; height: auto; display: block; border-radius: 10px; }
+
     .wrap {
-      max-width: 860px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 64px 20px 40px;
+      padding: 28px 24px 0;
     }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; margin-bottom: 28px;
+
+    /* -------- NAV -------- */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
     }
     .brand {
-      display: flex; align-items: center; gap: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--sand);
     }
-    .logo {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      box-shadow: 0 10px 30px rgba(176,111,251,.35), inset 0 0 12px rgba(255,255,255,.12);
+    .brand img { width: 38px; height: 38px; border-radius: 9px; display: block; }
+    .brand-name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
-    .title {
-      font-size: 1.5rem; font-weight: 700; letter-spacing: .2px;
+    .beta-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 3px 8px;
+      border: 1px solid rgba(224,120,86,0.35);
+      border-radius: 999px;
+      margin-left: 2px;
     }
+    nav ul {
+      display: flex; gap: 28px; list-style: none; margin: 0; padding: 0;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+    nav a:hover { color: var(--sand); }
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+    }
+
+    /* -------- HERO -------- */
     .hero {
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      padding: 40px 0 100px;
     }
     .hero h1 {
-      margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px); line-height: 1.15;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      font-weight: 800;
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.028em;
+      line-height: 1.04;
+      margin: 0 0 20px;
+      color: var(--sand);
     }
-    .hero p { margin: 0 0 18px; color: var(--muted); }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 0 32px;
+      line-height: 1.5;
+    }
+
+    .cta-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
     .btn {
-      display: inline-block; padding: 12px 16px; border-radius: 10px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      color: var(--text); text-decoration: none; font-weight: 600;
-      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
     }
-    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.1); }
-    .btn.primary {
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      border: none; color: white; box-shadow: 0 8px 20px rgba(106,92,255,.35);
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(224,120,86,0.28);
     }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 22px; }
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
+    .btn-primary:hover { background: var(--accent-deep); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--sand);
+      border: 1px solid var(--border);
     }
-    .card h3 { margin: 0 0 4px; font-size: 1rem; }
-    .card p { margin: 0; color: var(--muted); font-size: .925rem; }
-    footer { margin-top: 28px; color: var(--muted); font-size: .875rem; text-align: center; }
-    footer a { color: var(--text); opacity: .9; }
+    .btn-secondary:hover { border-color: var(--muted); }
+
+    /* -------- PHONE MOCKUPS -------- */
+    .phone {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.5),
+        0 0 0 8px rgba(15, 19, 18, 0.9);
+    }
+
+    /* -------- FEATURE ROWS -------- */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 80px 0;
+    }
+    .feature + .feature {
+      border-top: 1px solid var(--border);
+    }
+    .feature.reverse .feature-copy { order: 2; }
+    .feature-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .feature h2 {
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      color: var(--sand);
+    }
+    .feature p {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 440px;
+      margin: 0 0 14px;
+      font-size: 16px;
+    }
+    .feature ul {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feature li {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      color: var(--sand);
+      font-size: 14px;
+    }
+    .feature li::before {
+      content: "";
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      transform: translateY(-2px);
+    }
+
+    /* -------- CTA SECTION -------- */
+    .final-cta {
+      margin: 40px 0 0;
+      padding: 64px 40px;
+      background: var(--teal-deep);
+      border-radius: 28px;
+      border: 1px solid #1F5D5C;
+      text-align: center;
+    }
+    .final-cta h2 {
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 14px;
+      color: var(--sand);
+    }
+    .final-cta p {
+      color: var(--sand);
+      opacity: 0.75;
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+
+    /* -------- FOOTER -------- */
+    footer {
+      margin-top: 72px;
+      padding: 32px 0 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--subtle);
+    }
+    footer .foot-links {
+      display: flex; gap: 24px;
+    }
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--sand); }
+
+    /* -------- RESPONSIVE -------- */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 20px 0 60px;
+      }
+      .hero h1, .hero-sub { text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .cta-row { justify-content: center; }
+      .feature {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 56px 0;
+        text-align: center;
+      }
+      .feature.reverse .feature-copy { order: 0; }
+      .feature p, .feature ul { margin-left: auto; margin-right: auto; }
+      .feature li { justify-content: center; }
+      .final-cta { padding: 48px 24px; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div class="brand">
-        <img src="splitrick.png" alt="SplitRick App Icon" class="logo">
-        <div class="title">Splitrick</div>
-      </div>
-    </header>
 
-    <section class="hero" aria-label="Introduction">
-      <h1>Settle up without the spreadsheet</h1>
-      <p>Splitrick makes it effortless to track, split, and settle expenses with friends, roommates, and groups.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#gallery">See the App</a>
-        <a class="btn" href="#developers">Meet the Developers</a>
-        <a class="btn" href="#contact">Contact Us</a>
-        <a class="btn" href="/terms">Terms &amp; Conditions</a>
-        <a class="btn" href="/privacy">Privacy Policy</a>
-        <a class="btn" href="christmas.html">🎄 A Christmas Gift</a>
+    <nav>
+      <a class="brand" href="/">
+        <img src="splitrick.png" alt="">
+        <span class="brand-name">SplitRick</span>
+        <span class="beta-tag">Beta</span>
+      </a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Group expenses,<br><span class="accent">without the math.</span></h1>
+        <p class="hero-sub">Track shared expenses with roommates, travel groups, or your weekly dinner crew. Log who paid, split it however makes sense, and settle up in a tap.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Request Beta Access</a>
+          <a class="btn btn-secondary" href="#features">See how it works</a>
+        </div>
       </div>
-      <div class="grid">
-        <div class="card">
-          <h3>Transaction Insights</h3>
-          <p>Gain a clear view of your group’s spending habits and shared expenses. Splitrick automatically summarizes transactions, highlights trends, and helps you understand how money flows within your group.</p>
-        </div>
-        <div class="card">
-          <h3>Real‑time Updates</h3>
-          <p>Every expense or change in your group ledger is reflected instantly across all connected users—no refreshes or delays. Whether you’re adding a new bill or settling up, everyone stays perfectly in sync.</p>
-        </div>
-        <div class="card">
-          <h3>Join Your Friends</h3>
-          <p>Splitrick makes it effortless for families and friends to keep every shared expense perfectly in sync. Whether it’s planning a trip, splitting rent, or managing daily costs, everyone always sees the same up-to-date balances—no confusion, no missed payments.</p>
-        </div>
+      <div>
+        <img src="groups.png" alt="SplitRick Groups tab showing a list of expense groups with balances" class="phone">
       </div>
     </section>
 
-    <section class="about" aria-label="About Splitrick" style="margin-top: 48px;">
-      <h2>About Splitrick</h2>
-      <p>Splitrick is a secure expense sharing and group finance platform that lets users easily split bills, track spending, and settle payments in real time. Our mission is to make financial collaboration between friends, families, and roommates effortless, transparent, and privacy‑focused.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Security First</h3>
-          <p>We take security seriously—your personal and financial data is encrypted, protected, and never shared with anyone. Splitrick ensures that only you and your chosen group members can view expense information.</p>
+    <!-- FEATURES -->
+    <section id="features">
+
+      <div class="feature">
+        <div class="feature-copy">
+          <div class="feature-label">Groups</div>
+          <h2>One balance per group. Nothing to reconcile later.</h2>
+          <p>Spin up a group for your apartment, a trip, or anything else you split money on. Invite people with a six-digit code or a shared link. SplitRick keeps a running balance so you always know where everyone stands.</p>
+          <ul>
+            <li>Filter by who you owe, who owes you, or what's already settled</li>
+            <li>Group photos and names you can actually tell apart</li>
+            <li>Join a group in under ten seconds</li>
+          </ul>
         </div>
-        <div class="card">
-          <h3>Built by Users, for Users</h3>
-          <p>Splitrick is built by a team of engineers with experience in fintech and cloud infrastructure, ensuring a reliable experience for every user.</p>
-        </div>
-        <div class="card">
-          <h3>Free, Always</h3>
-          <p>Splitrick is—and will always be—completely free to use. We believe that managing shared expenses shouldn’t come with extra costs or subscriptions. There are no hidden fees, no premium tiers, and no ads—just a simple, transparent way to keep group finances organized. Our goal is to make fair expense tracking accessible to everyone, whether you’re splitting rent, planning trips, or managing day-to-day bills with friends and family.</p>
+        <div>
+          <img src="groups.png" alt="Groups tab with multiple active groups and balances" class="phone">
         </div>
       </div>
-    </section>
 
-    <section id="developers" class="developers" style="margin-top: 48px; text-align: center;">
-      <h2>Meet the Developers</h2>
-      <p>Splitrick is built and maintained by a passionate team of engineers dedicated to making expense sharing simple and secure.</p>
-      <p>
-        <a href="https://www.linkedin.com/in/rickykyte/" target="_blank" rel="noopener noreferrer" class="btn primary">Connect on LinkedIn</a>
-      </p>
-    </section>
-
-    <section id="gallery" class="gallery" aria-label="App Screenshots">
-      <h2 style="margin:0 0 10px;">See the App</h2>
-      <p class="muted" style="margin:0 0 16px; color: var(--muted);">
-        Explore Splitrick’s intuitive design — from adding expenses to splitting bills and tracking payments. Every screen is built for clarity and speed, helping you and your friends stay organized effortlessly.
-      </p>
-      <div class="shots">
-        <div class="shot"><img src="splitrickaddexpense.png" alt="Add Expense in Splitrick"></div>
-        <div class="shot"><img src="splitricksplit.png" alt="Split View in Splitrick"></div>
-        <div class="shot"><img src="splitricksplitexpense.png" alt="Split Expense screen in Splitrick"></div>
+      <div class="feature reverse">
+        <div class="feature-copy">
+          <div class="feature-label">Ledger</div>
+          <h2>Split equally, by percent, or by exact amount.</h2>
+          <p>Drop in the amount, pick who paid, and split it however makes sense. Rent goes by percent. Groceries split equally. The tickets went 70/30. SplitRick does the math and shows exactly what each person owes.</p>
+          <ul>
+            <li>Categories, descriptions, and a receipt photo per expense</li>
+            <li>Edit or delete without wrecking anyone's running balance</li>
+            <li>See who lent what at a glance — no spreadsheets</li>
+          </ul>
+        </div>
+        <div>
+          <img src="ledger.png" alt="A group's transaction ledger showing individual expenses and balances" class="phone">
+        </div>
       </div>
+
+      <div class="feature">
+        <div class="feature-copy">
+          <div class="feature-label">Settle Up</div>
+          <h2>Pay what's owed. Zero out the group.</h2>
+          <p>The Settle tab shows the fewest payments needed to square up every group you're in. When the cash actually changes hands, record the payment and everyone's balance clears.</p>
+          <ul>
+            <li>Simplified transfers across all your groups at once</li>
+            <li>Push notifications when someone pays you back</li>
+            <li>Group-level or person-level settlements — your call</li>
+          </ul>
+        </div>
+        <div>
+          <img src="settle.png" alt="Settle Up tab showing active balances and a settled groups summary" class="phone">
+        </div>
+      </div>
+
     </section>
 
-    <section id="contact" class="contact" style="margin-top: 48px; text-align: center;">
-      <h2>Contact</h2>
-      <p>Have questions or need help with registration? Reach out to our chief developer at 
-        <a href="mailto:Richardkyte1@yahoo.com">Richardkyte1@yahoo.com</a>.
-      </p>
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="contact">
+      <h2>Try it before it ships.</h2>
+      <p>SplitRick is in TestFlight beta. If you want in, send a note and we'll add you to the next round.</p>
+      <a class="btn btn-primary" href="mailto:richardkyte1@yahoo.com?subject=SplitRick%20Beta%20Access">Email for beta access</a>
     </section>
 
     <footer>
-      <p>
-        © <span id="y"></span> Splitrick •
-        <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a>
-      </p>
+      <div>© <span id="year"></span> SplitRick</div>
+      <div class="foot-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="https://www.linkedin.com/in/rickykyte/" target="_blank" rel="noopener">Ricky Kyte</a>
+      </div>
     </footer>
+
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
