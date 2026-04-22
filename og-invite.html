@@ -1,0 +1,177 @@
+<!doctype html>
+<!--
+  OG card source — renders to a 1200×630 PNG used as og:image on
+  invite.html. NOT deployed publicly; kept in the repo so the design
+  is version-controlled and easy to re-export.
+
+  To regenerate the PNG (from repo root):
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+      --headless --disable-gpu \
+      --screenshot=public/og-invite.png \
+      --window-size=1200,630 \
+      "file://$PWD/og-invite.html"
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    /* Fix the body to exactly 1200x630 so headless Chrome captures
+       the card pixel-perfect with no scrollbars or padding. */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+                   'Segoe UI', Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #E8E4D9;
+    }
+    body {
+      /* Layered radial gradients on a teal-tinted near-black base —
+         matches the in-app aesthetic. The blobs add depth without
+         needing real raster artwork. */
+      background:
+        radial-gradient(900px 600px at 85% 15%, rgba(224,120,86,.32), transparent 60%),
+        radial-gradient(1100px 700px at 5% 95%, rgba(15,61,62,.85), transparent 60%),
+        #0C1413;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      align-items: center;
+      gap: 60px;
+      padding: 0 80px;
+      box-sizing: border-box;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: #E07856;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 32px;
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(224, 120, 86, 0.4);
+    }
+    .brand-name {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #E8E4D9;
+    }
+    h1 {
+      margin: 0;
+      font-size: 78px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: #E8E4D9;
+    }
+    h1 .accent {
+      color: #E07856;
+    }
+    p {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #9A948A;
+      max-width: 620px;
+    }
+    .right {
+      display: grid;
+      place-items: center;
+      width: 360px;
+      height: 360px;
+    }
+    /* Stylized invite ticket — gives the right side something
+       distinctive without needing actual screenshot art. */
+    .ticket {
+      width: 280px;
+      height: 320px;
+      background: #152220;
+      border: 1px solid #1F5D5C;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      box-sizing: border-box;
+      position: relative;
+      transform: rotate(-4deg);
+    }
+    .ticket-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 800;
+      color: #5F5A52;
+      margin-bottom: 12px;
+    }
+    .ticket-code {
+      font-size: 56px;
+      font-weight: 900;
+      color: #E8E4D9;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 24px;
+    }
+    .ticket-divider {
+      width: 100%;
+      height: 1px;
+      background: #1F3330;
+      margin: 0 0 20px;
+    }
+    .ticket-meta {
+      font-size: 13px;
+      color: #9A948A;
+      text-align: center;
+    }
+    .ticket-cta {
+      margin-top: 16px;
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #E07856;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <div class="brand-row">
+      <div class="logo">S</div>
+      <div class="brand-name">SplitRick</div>
+    </div>
+    <h1>You've been <span class="accent">invited</span> to a group</h1>
+    <p>Tap to join and start splitting expenses together. Equal splits, percentages, or exact amounts — SplitRick handles the math.</p>
+  </div>
+
+  <div class="right">
+    <div class="ticket">
+      <div class="ticket-label">Invite</div>
+      <div class="ticket-code">683560</div>
+      <div class="ticket-divider"></div>
+      <div class="ticket-meta">
+        Tap the link in your message to join instantly.
+      </div>
+      <div class="ticket-cta">Open in SplitRick</div>
+    </div>
+  </div>
+</body>
+</html>
