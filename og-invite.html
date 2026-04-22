@@ -50,11 +50,14 @@
       color: #E8E4D9;
     }
     body {
-      /* Single warm highlight up top, flat dark below — keeps the
-         footer strip legible instead of washed out by a second
-         gradient. */
+      /* Layered radial gradients. The terracotta highlight uses a
+         deeper rust base (#A64A2E) layered under the brighter #E07856
+         so the mid-fade reads as warm earth rather than washing into
+         bright orange. Teal wash in the bottom-left balances it. */
       background:
-        radial-gradient(1400px 900px at 50% 10%, rgba(224,120,86,.22), transparent 60%),
+        radial-gradient(900px 600px at 82% 12%, rgba(224,120,86,.35), transparent 55%),
+        radial-gradient(1200px 800px at 82% 12%, rgba(166,74,46,.55), transparent 65%),
+        radial-gradient(1100px 700px at 10% 100%, rgba(15,61,62,.85), transparent 60%),
         #0C1413;
       display: flex;
       flex-direction: column;
@@ -88,12 +91,14 @@
     h1 .accent {
       color: #E07856;
     }
-    /* Footer pinned at the bottom of the flex column. */
+    /* Footer pinned at the bottom of the flex column. Centered
+       wordmark anchors the card's bottom edge visually so the PNG
+       ends on intentional content rather than empty space. */
     .footer {
       flex: 0 0 100px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 0 96px;
       box-sizing: border-box;
       border-top: 2px solid rgba(224, 120, 86, 0.55);
@@ -106,17 +111,6 @@
       color: #E07856;
       text-transform: uppercase;
     }
-    .cta {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #E8E4D9;
-    }
-    .cta .arrow {
-      color: #E07856;
-      margin-left: 14px;
-      font-weight: 900;
-    }
   </style>
 </head>
 <body>
@@ -126,7 +120,6 @@
   </div>
   <div class="footer">
     <div class="wordmark">SplitRick</div>
-    <div class="cta">Tap to join <span class="arrow">&rarr;</span></div>
   </div>
 </body>
 </html>
