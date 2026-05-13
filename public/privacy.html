@@ -216,7 +216,7 @@
 
       <h2 id="operator">2. Who we are</h2>
       <p>SplitRick is independently operated by Richard Kyte, based in Arlington, Virginia, United States. For all purposes under this policy, "SplitRick," "we," "us," and "our" refer to this operator. The terms "you" and "your" refer to the person using the SplitRick mobile application or this website.</p>
-      <p>You can reach us at <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a> for any privacy-related question, request, or complaint.</p>
+      <p>You can reach us at <a href="mailto:SplitRickUS@gmail.com">SplitRickUS@gmail.com</a> for any privacy-related question, request, or complaint.</p>
 
       <h2 id="info-we-collect">3. Information we collect</h2>
 
@@ -224,16 +224,16 @@
       <ul>
         <li><strong>Phone number.</strong> Required at sign-up. Used to send you a one-time passcode (OTP) by SMS so you can authenticate, and to uniquely identify your account.</li>
         <li><strong>Display name.</strong> Your first and last name (or whatever name you choose to display). Shown to people in groups you join so they can recognize you.</li>
-        <li><strong>Profile photo.</strong> Optional. If you choose to upload one, it is stored on Amazon S3 and delivered via Amazon CloudFront. Shown to group members alongside your name.</li>
+        <li><strong>Profile photo.</strong> Optional. If you choose to upload one, it is stored in our encrypted cloud storage and delivered through a content delivery network. Shown to group members alongside your name.</li>
         <li><strong>Group content.</strong> When you create a group, join a group, add a transaction, record a payment, or invite someone, the content of those actions is stored on our servers. This includes group names, optional group photos, transaction descriptions, amounts, categories, dates, who paid, and how the expense was split.</li>
         <li><strong>Communications.</strong> If you email us, we receive your message, your email address, and any information you choose to include.</li>
       </ul>
 
       <h3>3.2 Information collected automatically</h3>
       <ul>
-        <li><strong>Authentication metadata.</strong> Amazon Cognito (our authentication provider) generates session tokens after a successful OTP verification. These tokens are stored on your device and are used to authorize requests to our servers.</li>
-        <li><strong>Device push token.</strong> If you grant the notification permission, Apple gives us a push token that lets us deliver notifications to your specific device. You can revoke this at any time in iOS Settings.</li>
-        <li><strong>Diagnostic and connection data.</strong> Our infrastructure (Amazon API Gateway, AppSync, CloudFront, S3) records standard server logs containing things like timestamps, IP addresses, request paths, response codes, and user-agent strings. These logs are used to operate the service, investigate abuse, and debug failures. They are not used to build advertising profiles.</li>
+        <li><strong>Authentication metadata.</strong> After a successful OTP verification, our authentication system issues short-lived session tokens that are stored on your device and used to authorize requests to our servers.</li>
+        <li><strong>Device push token.</strong> If you grant the notification permission, the operating system gives us a push token that lets us deliver notifications to your specific device. You can revoke this at any time in your device's Settings.</li>
+        <li><strong>Diagnostic and connection data.</strong> Our servers record standard operational logs containing things like timestamps, coarse network information, request paths, response codes, and user-agent strings. These logs are used to operate the service, investigate abuse, and debug failures. They are not used to build advertising profiles.</li>
       </ul>
 
       <h3>3.3 Information we do <em>not</em> collect</h3>
@@ -246,7 +246,7 @@
       <h2 id="how-we-use">4. How we use information</h2>
       <p>We use the information described above to:</p>
       <ul>
-        <li>Authenticate you on each app launch and on sensitive actions (via Cognito session tokens).</li>
+        <li>Authenticate you on each app launch and on sensitive actions (via short-lived session tokens).</li>
         <li>Show your name, photo, and balances to people in groups you have joined.</li>
         <li>Sync your group memberships, transactions, balances, and recent activity across your devices in real time.</li>
         <li>Send the push notifications you have opted into (for example, when someone adds an expense or records a payment in one of your groups).</li>
@@ -268,11 +268,11 @@
       <p>If you leave a group, your historical activity in that group (the transactions you added, paid for, or were part of) remains visible to the remaining members so that the group's books stay consistent. Your name continues to appear on those historical rows. Future members of a group can see your past activity in that group.</p>
 
       <h2 id="third-parties">6. Third-party processors</h2>
-      <p>SplitRick is built on Amazon Web Services and relies on a small set of vendors to operate. These vendors process your information solely to provide their services to us, under the terms of their own privacy and security commitments:</p>
+      <p>SplitRick relies on a small number of reputable cloud and platform vendors to operate. These vendors process your information solely to provide their services to us, under the terms of their own privacy and security commitments:</p>
       <ul>
-        <li><strong>Amazon Web Services, Inc.</strong> — Hosts our backend infrastructure, including Amazon Cognito (authentication and SMS delivery), AWS AppSync and AWS Lambda (API and business logic), Amazon DynamoDB (database), Amazon S3 and Amazon CloudFront (image storage and delivery), Amazon SNS (push notification fan-out), and Amazon CloudWatch (logs and metrics). AWS data centers used to operate SplitRick are located in the United States.</li>
-        <li><strong>Apple Inc.</strong> — Provides the Apple Push Notification service used to deliver iOS notifications. If you install SplitRick from the App Store, the App Store's own terms and privacy practices also apply to that distribution relationship.</li>
-        <li><strong>SMS carriers.</strong> The mobile carrier that delivers the one-time passcode SMS to your phone will see the message contents in order to route it. We rely on Amazon Cognito (and, downstream, Amazon SNS) for SMS delivery.</li>
+        <li><strong>Our cloud hosting provider</strong> — Hosts the backend infrastructure that powers authentication, the application API, the database, image storage and delivery, push notification fan-out, and operational logging. Data centers used to operate SplitRick are located in the United States.</li>
+        <li><strong>The mobile operating system platform</strong> — Provides the push notification system used to deliver notifications to your device. If you installed SplitRick from a mobile app store, the store's own terms and privacy practices also apply to that distribution relationship.</li>
+        <li><strong>SMS carriers</strong> — Your mobile carrier delivers the one-time passcode SMS to your phone and sees the message contents in order to route it.</li>
       </ul>
       <p>We do not share your information with any other third party for their own purposes. We will only disclose information to law enforcement or other authorities when we are legally required to do so, or when we believe in good faith that disclosure is necessary to prevent imminent harm.</p>
 
@@ -281,29 +281,29 @@
       <p>Standard message and data rates from your carrier may apply. You can reply <strong>STOP</strong> to opt out of further SMS messages or reply <strong>HELP</strong> for assistance. Opting out of SMS will prevent you from completing future SplitRick sign-ins until you opt back in, because OTPs are how we verify it is really you.</p>
 
       <h2 id="push">8. Push notifications</h2>
-      <p>If you grant the notification permission on iOS, we may send you push notifications for events like new transactions, payments recorded against your balance, group invitations, and other activity in your groups. You can disable push notifications entirely in your device's Settings &gt; Notifications &gt; SplitRick, or selectively in the SplitRick Account tab's notification preferences.</p>
+      <p>If you grant the notification permission, we may send you push notifications for events like new transactions, payments recorded against your balance, group invitations, and other activity in your groups. You can disable push notifications entirely in your device's Settings, or selectively in the SplitRick Account tab's notification preferences.</p>
 
       <h2 id="retention">9. Data retention &amp; deletion</h2>
       <p>We retain your account and content for as long as your account is active or as long as we need to in order to provide the service. Specifically:</p>
       <ul>
         <li><strong>Your account record</strong> (phone number, display name, profile photo reference, notification preferences) is retained while your account exists.</li>
         <li><strong>Groups you belong to</strong> retain your activity (transactions, balances, payments) for as long as the group exists. Group owners can delete groups they administer.</li>
-        <li><strong>Server logs</strong> are retained for a limited operational window (generally up to 30 days) and are then rotated or aggregated into anonymized metrics.</li>
-        <li><strong>SMS delivery records</strong> are retained by Amazon Cognito / Amazon SNS according to AWS's own retention practices.</li>
+        <li><strong>Server logs</strong> are retained for a limited operational window and are then rotated or aggregated into anonymized metrics.</li>
+        <li><strong>SMS delivery records</strong> are retained by our messaging providers according to their own retention practices.</li>
       </ul>
-      <p>You can request deletion of your SplitRick account at any time by emailing <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a> from the address associated with your account, or by using any in-app account deletion control we provide. When you delete your account:</p>
+      <p>You can request deletion of your SplitRick account at any time by emailing <a href="mailto:SplitRickUS@gmail.com">SplitRickUS@gmail.com</a> from the address associated with your account, or by using any in-app account deletion control we provide. When you delete your account:</p>
       <ul>
         <li>Your profile (name, photo, phone number, notification preferences, device tokens) is removed from active systems.</li>
         <li>Your historical contributions inside groups (transactions you added, payments you recorded, balances you participated in) remain visible to those groups so the books stay consistent, but they are no longer linked to a live identity. Your display name continues to appear on those historical records.</li>
-        <li>Residual copies may persist for a short period in encrypted backups before being overwritten on AWS's normal backup cycle.</li>
+        <li>Residual copies may persist for a short period in encrypted backups before being overwritten on our normal backup cycle.</li>
       </ul>
 
       <h2 id="your-rights">10. Your rights &amp; choices</h2>
       <p>Depending on where you live, you may have legal rights with respect to your personal information, including the right to access, correct, delete, or port your data, and the right to object to or restrict certain processing.</p>
       <ul>
-        <li><strong>Access &amp; correction.</strong> You can review and edit your display name and profile photo from the Account tab in the app. To request a copy of other information we hold about you, email <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a>.</li>
+        <li><strong>Access &amp; correction.</strong> You can review and edit your display name and profile photo from the Account tab in the app. To request a copy of other information we hold about you, email <a href="mailto:SplitRickUS@gmail.com">SplitRickUS@gmail.com</a>.</li>
         <li><strong>Deletion.</strong> Request deletion of your account at any time (see above).</li>
-        <li><strong>Push notifications.</strong> Disable in iOS Settings or in the Account tab's notification preferences.</li>
+        <li><strong>Push notifications.</strong> Disable in your device's Settings or in the Account tab's notification preferences.</li>
         <li><strong>SMS.</strong> Reply <strong>STOP</strong> to opt out (this will disable sign-in until you re-enroll).</li>
         <li><strong>California residents</strong> have rights under the California Consumer Privacy Act (CCPA / CPRA), including the right to know what personal information is collected, the right to delete, and the right to opt out of "sale" or "sharing" of personal information. <strong>We do not sell or share your personal information</strong> as those terms are defined under California law.</li>
         <li><strong>EEA / UK / Swiss residents</strong> have rights under the GDPR and equivalent laws, including the right of access, rectification, erasure, restriction, objection, and data portability. The legal basis for our processing is generally (a) contract — to provide the service you signed up for, (b) legitimate interests — to operate, secure, and improve the service, and (c) consent — for push notifications you opt into.</li>
@@ -314,25 +314,24 @@
       <p>We take reasonable and appropriate measures to protect your information:</p>
       <ul>
         <li>All traffic between the SplitRick app and our backend travels over HTTPS / TLS.</li>
-        <li>Authentication is handled by Amazon Cognito; we never see or store your one-time passcode, and we do not use passwords.</li>
-        <li>Profile photos and group images are stored in Amazon S3 with server-side encryption.</li>
-        <li>The DynamoDB database is encrypted at rest using AWS-managed keys.</li>
-        <li>Per-user access controls are enforced server-side in our AppSync resolvers and Lambda functions — we do not rely on client-side enforcement.</li>
+        <li>Authentication is handled by a managed identity provider; we never see or store your one-time passcode, and we do not use passwords.</li>
+        <li>Profile photos, group images, and the underlying database are encrypted at rest.</li>
+        <li>Per-user access controls are enforced server-side — we do not rely on client-side enforcement.</li>
         <li>We log access to sensitive operations and monitor for unusual patterns.</li>
       </ul>
-      <p>No system is perfectly secure. If you become aware of a vulnerability or believe your account has been accessed without your permission, please email us immediately at <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a>.</p>
+      <p>No system is perfectly secure. If you become aware of a vulnerability or believe your account has been accessed without your permission, please email us immediately at <a href="mailto:SplitRickUS@gmail.com">SplitRickUS@gmail.com</a>.</p>
 
       <h2 id="children">12. Children's privacy</h2>
       <p>SplitRick is not directed to children under 13, and we do not knowingly collect personal information from anyone under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will delete it. Users in jurisdictions with a higher minimum age of digital consent (for example, 16 in some EU member states) must meet that minimum age to use SplitRick.</p>
 
       <h2 id="international">13. International users</h2>
-      <p>SplitRick is operated from the United States, and the information we collect is processed and stored on AWS infrastructure in the United States. If you are accessing SplitRick from outside the United States, you understand and consent to the transfer of your information to the United States, which may have data protection laws that differ from those of your country.</p>
+      <p>SplitRick is operated from the United States, and the information we collect is processed and stored on cloud infrastructure located in the United States. If you are accessing SplitRick from outside the United States, you understand and consent to the transfer of your information to the United States, which may have data protection laws that differ from those of your country.</p>
 
       <h2 id="changes">14. Changes to this policy</h2>
       <p>We may update this Privacy Policy from time to time to reflect changes in the service, our practices, or applicable law. When we make a material change, we will revise the "Last updated" date at the top of this page and, where appropriate, notify you in the app or by email. Your continued use of SplitRick after the effective date of an updated policy means you accept the updated terms; if you do not, you can stop using SplitRick and request account deletion at any time.</p>
 
       <h2 id="contact">15. Contact</h2>
-      <p>For privacy questions, access requests, deletion requests, or any other matter covered by this policy, please contact us at <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a>. Postal correspondence may be sent to: SplitRick, c/o Richard Kyte, Arlington, Virginia, USA.</p>
+      <p>For privacy questions, access requests, deletion requests, or any other matter covered by this policy, please contact us at <a href="mailto:SplitRickUS@gmail.com">SplitRickUS@gmail.com</a>. Postal correspondence may be sent to: SplitRick, Arlington, Virginia, USA.</p>
     </main>
 
     <footer>
