@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SplitRick — Terms &amp; Conditions</title>
-  <meta name="description" content="Terms and conditions for using SplitRick, a group expense tracking application.">
+  <title>SplitRick — Terms of Service</title>
+  <meta name="description" content="Terms of Service for SplitRick, a mobile application for tracking and splitting group expenses.">
   <meta name="theme-color" content="#0C1413">
   <link rel="icon" href="/splitrick.png" type="image/png">
 
@@ -90,8 +90,19 @@
       margin-right: 10px;
       border-radius: 2px;
     }
-    p { color: var(--muted); margin: 0 0 14px; line-height: 1.65; }
+    h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 22px 0 8px;
+      color: var(--sand);
+    }
+    p, li { color: var(--muted); margin: 0 0 14px; line-height: 1.65; }
     strong { color: var(--sand); font-weight: 600; }
+    ul {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+    ul li { margin-bottom: 6px; }
     a {
       color: var(--accent);
       text-decoration: none;
@@ -101,6 +112,42 @@
     a:hover {
       color: var(--accent-deep);
       border-bottom-color: var(--accent-deep);
+    }
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 0 0 36px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin: 0 0 10px;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 22px;
+      column-count: 2;
+      column-gap: 24px;
+    }
+    .toc li {
+      margin: 0 0 4px;
+      break-inside: avoid;
+      font-size: 14px;
+    }
+    .toc a { border-bottom: none; }
+    .callout {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 12px 0 18px;
+      font-size: 14px;
     }
 
     footer {
@@ -120,6 +167,10 @@
     }
     footer a:hover { color: var(--sand); }
     footer .foot-links { display: flex; gap: 20px; }
+
+    @media (max-width: 540px) {
+      .toc ol { column-count: 1; }
+    }
   </style>
 </head>
 <body>
@@ -134,29 +185,132 @@
     </nav>
 
     <main>
-      <h1>Terms &amp; Conditions</h1>
-      <p class="updated">Last updated: July 18, 2024</p>
+      <h1>Terms of Service</h1>
+      <p class="updated">Last updated: May 13, 2026</p>
 
-      <h2>1. Overview</h2>
-      <p>Welcome to SplitRick — a simple, secure way to track and split group expenses. By using SplitRick, you agree to the terms below. These terms are designed to keep SplitRick safe and transparent for all users.</p>
+      <div class="toc">
+        <p class="toc-title">Contents</p>
+        <ol>
+          <li><a href="#agreement">Agreement</a></li>
+          <li><a href="#service">What SplitRick is (and isn't)</a></li>
+          <li><a href="#eligibility">Eligibility</a></li>
+          <li><a href="#account">Your account</a></li>
+          <li><a href="#sms">SMS &amp; one-time passcodes</a></li>
+          <li><a href="#groups">Groups, invites &amp; content</a></li>
+          <li><a href="#acceptable-use">Acceptable use</a></li>
+          <li><a href="#license">Your content license</a></li>
+          <li><a href="#ip">SplitRick intellectual property</a></li>
+          <li><a href="#third-party">Third-party services</a></li>
+          <li><a href="#availability">Availability &amp; changes</a></li>
+          <li><a href="#termination">Termination</a></li>
+          <li><a href="#disclaimers">Disclaimers</a></li>
+          <li><a href="#liability">Limitation of liability</a></li>
+          <li><a href="#indemnification">Indemnification</a></li>
+          <li><a href="#disputes">Governing law &amp; disputes</a></li>
+          <li><a href="#changes">Changes to these terms</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </div>
 
-      <h2>2. Eligibility</h2>
-      <p>SplitRick is intended for personal and group expense tracking. You must be at least 13 years old to use the service. By using SplitRick, you confirm that you have the authority to enter into this agreement.</p>
+      <h2 id="agreement">1. Agreement</h2>
+      <p>These Terms of Service (the "Terms") are a binding agreement between you and Richard Kyte, the operator of SplitRick ("SplitRick," "we," "us," or "our"). By installing, accessing, or using the SplitRick mobile application or the website at splitrick.click (collectively, the "Service"), you agree to these Terms and to our <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the Service.</p>
 
-      <h2>3. SMS &amp; One-Time Passcodes (OTP)</h2>
-      <p>SplitRick uses SMS-based one-time passcodes for secure authentication. Message and data rates may apply. We will never send promotional texts. You may reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for assistance at any time.</p>
+      <h2 id="service">2. What SplitRick is (and isn't)</h2>
+      <p>SplitRick is a mobile application that helps you and the people you share expenses with keep a shared record of who paid for what and what each person owes. It tracks transactions you and your group members enter, computes balances, and lets you record payments to settle those balances.</p>
+      <div class="callout">
+        <strong>SplitRick is not a payment processor.</strong> We do not move money. We do not connect to your bank, credit card, or any other financial account. When you "record a payment" in SplitRick, you are telling SplitRick that a payment happened outside the app so the balances can be updated. You are responsible for any actual money movement, including any disputes about whether a payment was made or received.
+      </div>
+      <p>Balances and amounts shown in SplitRick are informational records based on the entries you and your group members make. They are not statements of debt, legal obligations, or accounting records, and SplitRick does not verify the underlying transactions.</p>
 
-      <h2>4. Data &amp; Privacy</h2>
-      <p>Your information is used only to provide and improve the SplitRick experience. We do not sell or share your personal data with third parties for advertising purposes. Please refer to our <a href="/privacy">Privacy Policy</a> for full details.</p>
+      <h2 id="eligibility">3. Eligibility</h2>
+      <p>You must be at least 13 years old to use SplitRick. In jurisdictions where the minimum age of digital consent is higher (for example, 16 in some EU member states), you must meet that age. By using the Service, you represent that (a) you meet the minimum age, (b) you have the legal capacity to enter into this agreement, and (c) you are not barred from using the Service under any applicable law.</p>
+      <p>If you are using SplitRick on behalf of an organization (for example, a household, club, or trip group), you represent that you are authorized to bind that organization to these Terms.</p>
 
-      <h2>5. Limitation of Liability</h2>
-      <p>SplitRick is provided "as-is." We make no warranties, express or implied, regarding availability, accuracy, or fitness for a particular purpose. SplitRick and its developers shall not be held liable for any damages arising from use of the app.</p>
+      <h2 id="account">4. Your account</h2>
+      <p>To use SplitRick you need to create an account using your mobile phone number. We send a one-time passcode by SMS to that number to verify it is yours. You are responsible for:</p>
+      <ul>
+        <li>Keeping access to your phone number, since possession of the phone number is what authenticates your account.</li>
+        <li>The accuracy of the display name and profile photo you choose.</li>
+        <li>All activity that occurs under your account, including transactions added or payments recorded from your account.</li>
+        <li>Notifying us promptly at <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a> if you suspect your account has been accessed without your permission.</li>
+      </ul>
+      <p>You may have only one account at a time. We may, at our discretion, refuse, suspend, or terminate any account that we believe has been used in violation of these Terms.</p>
 
-      <h2>6. Changes to These Terms</h2>
-      <p>We may update these Terms occasionally. The "Last updated" date will always indicate the most recent version. Continued use of SplitRick after changes means you accept the revised terms.</p>
+      <h2 id="sms">5. SMS &amp; one-time passcodes</h2>
+      <p>SplitRick uses SMS for transactional one-time passcodes (OTPs) during sign-in and account recovery. By signing up, you consent to receive these SMS messages from us. Standard message and data rates from your carrier may apply. You can reply <strong>STOP</strong> to opt out, or <strong>HELP</strong> for assistance. We do not send marketing or promotional text messages.</p>
+      <p>If you opt out of SMS, you will not be able to complete future sign-ins until you opt back in. We do not store passcodes once they have been delivered.</p>
 
-      <h2>7. Contact</h2>
-      <p>Questions? Email us at <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a>.</p>
+      <h2 id="groups">6. Groups, invites &amp; content</h2>
+      <p>SplitRick is built around groups. When you create or join a group, your activity in that group (your name, profile photo, transactions you add, payments you record, and balance) is shared with other members of that group. The following terms apply specifically to groups and group content:</p>
+      <ul>
+        <li><strong>Invitations.</strong> A group invite link gives anyone who has the link the ability to join that group. Treat invite links as you would any other shared secret — share them only with people you actually want in the group. Group owners can regenerate or revoke invite codes.</li>
+        <li><strong>Accuracy of entries.</strong> You are responsible for the accuracy of the transactions and payments you record. Editing or deleting a transaction notifies and re-balances the group; do not use this functionality to manipulate balances in bad faith.</li>
+        <li><strong>Visibility of historical activity.</strong> If you leave a group, your historical contributions (transactions you added, balances you participated in) remain visible to the remaining members so the books stay consistent. Future members of a group can see prior activity in that group.</li>
+        <li><strong>Group ownership and administration.</strong> The user who creates a group is its owner. Owners can edit group settings, regenerate invite codes, and delete the group. Deleting a group permanently removes its transactions, balances, and membership records.</li>
+        <li><strong>Limits.</strong> We may enforce reasonable limits on group size, the number of groups per user, transaction frequency, transaction amount, and similar parameters to keep the Service reliable. These limits may change without notice.</li>
+      </ul>
+
+      <h2 id="acceptable-use">7. Acceptable use</h2>
+      <p>When using SplitRick, you agree not to:</p>
+      <ul>
+        <li>Use the Service to commit fraud, launder money, evade taxes, or break the law.</li>
+        <li>Use the Service to harass, threaten, defame, impersonate, or stalk another person, including by entering false transactions intended to harm someone's reputation or financial standing.</li>
+        <li>Upload profile or group images that are illegal, infringing, sexually explicit, violent, or hateful, or that contain other people's personal information without their consent.</li>
+        <li>Enter transaction descriptions that are illegal, threatening, harassing, defamatory, or that contain other people's personal information without their consent.</li>
+        <li>Scrape, reverse-engineer, decompile, or attempt to circumvent rate limits, authentication, or access controls of the Service.</li>
+        <li>Probe, scan, or test the vulnerability of the Service without our prior written permission, or interfere with the Service's normal operation.</li>
+        <li>Use automated tools, bots, or scripts to access the Service beyond the official mobile application.</li>
+        <li>Resell, sublicense, or commercially exploit the Service or any portion of it.</li>
+        <li>Send unsolicited messages or invites to people who have not asked to be contacted.</li>
+        <li>Use the Service in any way that could damage, disable, overburden, or impair our infrastructure, or interfere with any other user's enjoyment of the Service.</li>
+      </ul>
+      <p>Violations of this section may result in suspension or termination of your account, in addition to any other remedies available to us under these Terms or applicable law.</p>
+
+      <h2 id="license">8. Your content license</h2>
+      <p>You retain ownership of the content you submit to SplitRick (your display name, profile photo, group names, group photos, transaction descriptions, etc. — collectively, "User Content"). By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free license to host, store, reproduce, display, and transmit that User Content solely as needed to operate, provide, and improve the Service — for example, showing your profile photo to the members of a group you joined, syncing your transactions across your devices, and including your name in another member's view of a transaction you paid for. This license terminates when you delete the User Content, except (a) for residual copies retained in backups on a normal rotation cycle, and (b) for User Content that has been incorporated into another user's view (for example, a transaction you added that is now part of a group's shared ledger).</p>
+      <p>You represent and warrant that you have the right to submit your User Content and that it does not violate any third party's rights or any applicable law.</p>
+
+      <h2 id="ip">9. SplitRick intellectual property</h2>
+      <p>The Service, including its software, design, brand, name, logo, and the SplitRick application itself, is owned by Richard Kyte and is protected by United States and international intellectual property laws. We grant you a limited, personal, non-exclusive, non-transferable, revocable license to use the Service for your own non-commercial purposes, subject to these Terms. We reserve all rights not expressly granted.</p>
+
+      <h2 id="third-party">10. Third-party services</h2>
+      <p>SplitRick is delivered through Apple's App Store and is built on top of Amazon Web Services and other third-party platforms. Your use of those underlying services is also governed by their own terms:</p>
+      <ul>
+        <li>The Apple Media Services Terms and Conditions apply to your installation and use of SplitRick through the App Store.</li>
+        <li>The Apple Push Notification service is used to deliver push notifications.</li>
+        <li>Amazon Web Services hosts our backend (Cognito, AppSync, Lambda, DynamoDB, S3, CloudFront, SNS, CloudWatch).</li>
+        <li>Your mobile carrier delivers SMS one-time passcodes and is subject to its own terms.</li>
+      </ul>
+      <p>We are not responsible for the acts, omissions, terms, or policies of these third parties, and your relationship with them is between you and them.</p>
+
+      <h2 id="availability">11. Availability &amp; changes</h2>
+      <p>We work to keep the Service available, but we do not guarantee uninterrupted access. We may, at any time and without prior notice, add, remove, or change features; suspend or discontinue all or part of the Service; impose limits; or perform maintenance. We are not liable to you or to any third party for any modification, suspension, or discontinuance of the Service.</p>
+
+      <h2 id="termination">12. Termination</h2>
+      <p><strong>By you.</strong> You may stop using SplitRick at any time, leave any group, or delete your account. You can request deletion of your account by emailing <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a> from the address associated with your account, or by using any in-app deletion control we provide. See our <a href="/privacy">Privacy Policy</a> for what happens to your data when you delete your account.</p>
+      <p><strong>By us.</strong> We may suspend or terminate your access to the Service, in whole or in part, at any time, with or without notice, if (a) you violate these Terms or any applicable law, (b) we are required to do so by law, (c) we discontinue the Service, or (d) we reasonably believe your continued use poses a security or reliability risk to other users or to our infrastructure.</p>
+      <p>Sections that by their nature should survive termination (including 8, 9, 13, 14, 15, 16, and 17) will survive.</p>
+
+      <h2 id="disclaimers">13. Disclaimers</h2>
+      <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND ANY WARRANTIES ARISING OUT OF COURSE OF DEALING OR USAGE OF TRADE.</p>
+      <p>WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF VIRUSES OR HARMFUL COMPONENTS, THAT BALANCES OR CALCULATIONS WILL BE ACCURATE, OR THAT USER CONTENT WILL NOT BE LOST. YOU USE THE SERVICE AT YOUR OWN RISK.</p>
+
+      <h2 id="liability">14. Limitation of liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL SPLITRICK, RICHARD KYTE, OR ANY OF OUR AGENTS BE LIABLE TO YOU FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES (INCLUDING WITHOUT LIMITATION LOSS OF PROFITS, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES) ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE SERVICE, REGARDLESS OF THE THEORY OF LIABILITY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p>OUR TOTAL CUMULATIVE LIABILITY FOR ANY CLAIM ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE WILL NOT EXCEED ONE HUNDRED U.S. DOLLARS (USD $100). SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES, SO SOME OR ALL OF THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU; IN THAT CASE, OUR LIABILITY WILL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY LAW.</p>
+
+      <h2 id="indemnification">15. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless SplitRick, Richard Kyte, and our agents from any claims, damages, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or in connection with (a) your use or misuse of the Service, (b) your violation of these Terms or any applicable law, (c) your User Content, or (d) your violation of any third party's rights, including any other user of the Service.</p>
+
+      <h2 id="disputes">16. Governing law &amp; disputes</h2>
+      <p>These Terms and any dispute arising out of or relating to them or the Service are governed by the laws of the Commonwealth of Virginia, United States, without regard to its conflict-of-laws principles, and by applicable U.S. federal law. The exclusive venue for any dispute that is not subject to arbitration shall be the state or federal courts located in Arlington County, Virginia, and you consent to the personal jurisdiction of those courts.</p>
+      <p>If you are a consumer residing outside the United States, this section does not deprive you of the protection of mandatory provisions of the law of your country of residence.</p>
+
+      <h2 id="changes">17. Changes to these terms</h2>
+      <p>We may update these Terms from time to time. When we make a material change, we will revise the "Last updated" date at the top of this page and, where appropriate, notify you in the app or by email. Your continued use of the Service after the effective date of an update means you accept the updated Terms. If you do not accept them, you must stop using the Service and may request account deletion at any time.</p>
+
+      <h2 id="contact">18. Contact</h2>
+      <p>For questions about these Terms, please email <a href="mailto:richardkyte1@yahoo.com">richardkyte1@yahoo.com</a>. Postal correspondence may be sent to: SplitRick, c/o Richard Kyte, Arlington, Virginia, USA.</p>
     </main>
 
     <footer>
