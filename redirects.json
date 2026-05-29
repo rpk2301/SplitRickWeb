@@ -24,6 +24,18 @@
       "condition": null
     },
     {
+      "source": "/get",
+      "target": "/get.html",
+      "status": "200",
+      "condition": null
+    },
+    {
+      "source": "/support",
+      "target": "/support.html",
+      "status": "200",
+      "condition": null
+    },
+    {
       "source": "/",
       "target": "/index.html",
       "status": "200",

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SplitRick — Support</title>
+  <meta name="description" content="Get help with SplitRick. Contact us at SplitRickUS@gmail.com for support, account deletion, billing, or bug reports.">
+  <meta name="theme-color" content="#0C1413">
+  <link rel="icon" href="/splitrick.png" type="image/png">
+
+  <style>
+    :root {
+      --bg:         #0C1413;
+      --card:       #152220;
+      --border:     #1F3330;
+      --accent:     #E07856;
+      --accent-deep:#C56340;
+      --sand:       #E8E4D9;
+      --muted:      #9A948A;
+      --subtle:     #5F5A52;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--sand);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -300px; right: -200px;
+      width: 800px; height: 800px;
+      background: radial-gradient(closest-side, rgba(224,120,86,0.14), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 28px 24px 40px; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--sand);
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; display: block; }
+    .brand-name { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; }
+    .back-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .back-link:hover { color: var(--accent-deep); }
+
+    main { padding: 8px 0 0; }
+    h1 {
+      font-size: clamp(32px, 4.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      margin: 0 0 8px;
+      color: var(--sand);
+    }
+    .lede { color: var(--muted); font-size: 16px; margin: 0 0 32px; }
+    h2 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 36px 0 10px;
+      color: var(--sand);
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-right: 10px;
+      border-radius: 2px;
+    }
+    p, li { color: var(--muted); margin: 0 0 14px; line-height: 1.65; }
+    strong { color: var(--sand); font-weight: 600; }
+    ul { padding-left: 22px; margin: 0 0 16px; }
+    ul li { margin-bottom: 6px; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(224,120,86,0.25);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    a:hover { color: var(--accent-deep); border-bottom-color: var(--accent-deep); }
+
+    /* Primary contact card */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 26px;
+      margin: 0 0 8px;
+      text-align: center;
+    }
+    .contact-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--subtle); margin: 0 0 8px;
+    }
+    .contact-email {
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: 800;
+      color: var(--sand);
+      word-break: break-all;
+      margin: 0 0 18px;
+    }
+    .email-btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      border-bottom: none;
+      transition: background 0.15s ease, transform 0.08s ease;
+    }
+    .email-btn:hover { background: var(--accent-deep); color: #fff; border-bottom: none; }
+    .email-btn:active { transform: translateY(1px); }
+    .response-note { font-size: 13px; color: var(--subtle); margin: 12px 0 0; }
+
+    footer {
+      margin-top: 64px;
+      padding: 28px 0 20px;
+      border-top: 1px solid var(--border);
+      color: var(--subtle);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer a { color: var(--muted); border-bottom: none; }
+    footer a:hover { color: var(--sand); }
+    footer .foot-links { display: flex; gap: 20px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <nav>
+      <a class="brand" href="/">
+        <img src="splitrick.png" alt="">
+        <span class="brand-name">SplitRick</span>
+      </a>
+      <a class="back-link" href="/">← Back</a>
+    </nav>
+
+    <main>
+      <h1>Support</h1>
+      <p class="lede">SplitRick is built by a small team, and we read every message. The fastest way to reach us is email.</p>
+
+      <div class="contact-card">
+        <p class="contact-label">Contact us</p>
+        <p class="contact-email">SplitRickUS@gmail.com</p>
+        <a class="email-btn" href="mailto:SplitRickUS@gmail.com?subject=SplitRick%20Support">Email support</a>
+        <p class="response-note">We typically reply within 1–2 business days.</p>
+      </div>
+
+      <h2>What we can help with</h2>
+      <ul>
+        <li><strong>Trouble signing in.</strong> SplitRick signs you in with a one-time passcode (OTP) texted to your phone number. If a code isn't arriving, make sure you have signal and didn't reply STOP to our messages; then email us and we'll help.</li>
+        <li><strong>Bugs &amp; feedback.</strong> Tell us what happened and what you expected. Screenshots and your phone model / iOS version help us reproduce it faster.</li>
+        <li><strong>Groups, balances &amp; payments.</strong> Questions about how splitting, balances, or settling up work — we're happy to walk you through it.</li>
+        <li><strong>Receipt scanning &amp; other Pro features.</strong> Questions about SplitRick Divide and what it unlocks.</li>
+      </ul>
+
+      <h2>Manage or cancel SplitRick Divide</h2>
+      <p>SplitRick Divide is an auto-renewable subscription billed through the Apple App Store. To manage, change, or cancel it, open <strong>Settings → your name → Subscriptions</strong> on your iPhone and select SplitRick. Apple handles all billing — see our <a href="/terms#subscriptions">Terms</a> for details. If you have a billing question we can't resolve, email us and we'll point you in the right direction.</p>
+
+      <h2>Delete your account</h2>
+      <p>You can request deletion of your SplitRick account at any time. Email <a href="mailto:SplitRickUS@gmail.com?subject=SplitRick%20Account%20Deletion">SplitRickUS@gmail.com</a> from the phone number / address tied to your account, or use any in-app deletion control we provide. See our <a href="/privacy#retention">Privacy Policy</a> for exactly what happens to your data when you delete.</p>
+
+      <h2>Privacy &amp; your data</h2>
+      <p>For privacy questions, data-access requests, or anything about how we handle your information, email us or read the full <a href="/privacy">Privacy Policy</a>.</p>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> SplitRick</div>
+      <div class="foot-links">
+        <a href="/">Home</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </footer>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Try SplitRick</title>
+
+  <meta name="description" content="A friend invited you to SplitRick — the easy way to split expenses with friends, roommates, and trip groups.">
+  <meta name="theme-color" content="#0C1413">
+  <link rel="icon" href="/splitrick.png" type="image/png">
+
+  <!-- Open Graph for iMessage / WhatsApp / Slack rich previews.
+       Square icon (summary card) to match the in-app share look. -->
+  <meta property="og:site_name" content="SplitRick">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://splitrick.click/get">
+  <meta property="og:title" content="Try SplitRick">
+  <meta property="og:description" content="The easy way to split expenses with friends.">
+  <meta property="og:image" content="https://splitrick.click/splitrick.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Try SplitRick">
+  <meta name="twitter:description" content="The easy way to split expenses with friends.">
+  <meta name="twitter:image" content="https://splitrick.click/splitrick.png">
+
+  <style>
+    :root {
+      --bg:         #0C1413;
+      --card:       #152220;
+      --border:     #1F3330;
+      --accent:     #E07856;
+      --accent-deep:#C56340;
+      --sage:       #B5C18E;
+      --sand:       #E8E4D9;
+      --muted:      #9A948A;
+      --subtle:     #5F5A52;
+    }
+    * { box-sizing: border-box; }
+    html { height: 100%; }
+    body {
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: var(--bg);
+      color: var(--sand);
+      margin: 0;
+      min-height: 100%;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
+    }
+
+    /* Soft accent glow */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -240px; left: 50%;
+      width: 700px; height: 700px;
+      transform: translateX(-50%);
+      background: radial-gradient(closest-side, rgba(224,120,86,0.18), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    main {
+      width: 100%;
+      max-width: 440px;
+      margin: auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 36px 28px 28px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 24px;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 12px 30px rgba(224, 120, 86, 0.28);
+    }
+
+    h1 {
+      font-size: clamp(22px, 6vw, 26px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0 0 8px;
+      color: var(--sand);
+    }
+    .tagline {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 26px;
+      line-height: 1.5;
+    }
+
+    /* Value props */
+    .perks {
+      list-style: none;
+      margin: 0 0 26px;
+      padding: 0;
+      text-align: left;
+    }
+    .perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .perks li:first-child { border-top: none; }
+    .perk-icon {
+      flex: 0 0 28px;
+      height: 28px;
+      width: 28px;
+      border-radius: 9px;
+      background: rgba(224,120,86,0.12);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      margin-top: 1px;
+    }
+    .perk-text { font-size: 14px; line-height: 1.45; }
+    .perk-text strong { color: var(--sand); font-weight: 700; }
+    .perk-text span { color: var(--muted); }
+
+    /* Primary CTA */
+    .cta {
+      display: block;
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s ease, transform 0.08s ease;
+    }
+    .cta:hover { background: var(--accent-deep); }
+    .cta:active { transform: translateY(1px); }
+
+    .fineprint {
+      margin: 14px 0 0;
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0 12px;
+      color: var(--subtle);
+      font-size: 12px;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--sand); }
+
+    @media (max-width: 380px) {
+      main { padding: 28px 20px 22px; border-radius: 18px; }
+      .logo { width: 72px; height: 72px; margin-bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <img class="logo" src="/splitrick.png" alt="SplitRick">
+    <h1>Split expenses, skip the math</h1>
+    <p class="tagline">A friend uses SplitRick to track shared expenses and settle up. Join them — it's free to start.</p>
+
+    <ul class="perks">
+      <li>
+        <span class="perk-icon">$</span>
+        <span class="perk-text"><strong>Log who paid for what.</strong> <span>Keep a shared record so no one has to remember.</span></span>
+      </li>
+      <li>
+        <span class="perk-icon">÷</span>
+        <span class="perk-text"><strong>Split it however makes sense.</strong> <span>Evenly, by shares, or item-by-item from a scanned receipt.</span></span>
+      </li>
+      <li>
+        <span class="perk-icon">✓</span>
+        <span class="perk-text"><strong>Settle up in a tap.</strong> <span>See who owes whom at a glance and clear balances when you pay.</span></span>
+      </li>
+    </ul>
+
+    <a class="cta" id="getBtn" href="#">Get SplitRick</a>
+    <p class="fineprint">Free to download. Available on iPhone.</p>
+  </main>
+
+  <footer>
+    © <span id="year"></span> SplitRick · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+  </footer>
+
+  <script>
+    (function () {
+      // Where "Get SplitRick" sends people. Swap this for the direct
+      // App Store listing URL once it's live, e.g.
+      //   https://apps.apple.com/app/id<APPSTORE_ID>
+      // Until then, an App Store search for SplitRick is a safe, working
+      // destination that resolves to the listing as soon as it publishes.
+      var APP_STORE_URL = "https://apps.apple.com/us/search?term=SplitRick";
+
+      document.getElementById('getBtn').href = APP_STORE_URL;
+
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
