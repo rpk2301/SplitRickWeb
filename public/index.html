@@ -176,6 +176,43 @@
         0 0 0 8px rgba(15, 19, 18, 0.9);
     }
 
+    /* -------- SCREENSHOT GALLERY (App Store frames) --------
+       These are full App Store marketing frames — they already include
+       the device + caption on a dark-teal background that matches the
+       page, so we show them flat (no .phone bezel) in a swipeable row. */
+    .shots { padding: 16px 0 8px; }
+    .shots-title {
+      text-align: center;
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+    .shots-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 22px;
+    }
+    .shots-row {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 20px 24px;
+      scrollbar-width: none;
+    }
+    .shots-row::-webkit-scrollbar { display: none; }
+    .shots-row img {
+      flex: 0 0 auto;
+      width: clamp(216px, 62vw, 264px);
+      height: auto;
+      border-radius: 22px;
+      scroll-snap-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+
     /* -------- FEATURE ROWS -------- */
     .feature {
       display: grid;
@@ -333,6 +370,20 @@
       </div>
       <div>
         <img src="groups.png" alt="SplitRick Groups tab showing a list of expense groups with balances" class="phone">
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS (App Store frames) -->
+    <section class="shots">
+      <h2 class="shots-title">See it in action</h2>
+      <p class="shots-sub">A look inside SplitRick — swipe through.</p>
+      <div class="shots-row">
+        <img src="/appstore/SplitRick-01-Hero.png" alt="A SplitRick group with a live balance and open receipts" loading="lazy">
+        <img src="/appstore/SplitRick-02-Ledger.png" alt="A group's expense ledger" loading="lazy">
+        <img src="/appstore/SplitRick-03-Data.png" alt="Group balances and insights" loading="lazy">
+        <img src="/appstore/SplitRick-04-Receipts.png" alt="Scan a receipt and split it item by item" loading="lazy">
+        <img src="/appstore/SplitRick-05-Balances.png" alt="Who owes whom across the group" loading="lazy">
+        <img src="/appstore/SplitRick-06-SettleUp.png" alt="Settle up and clear balances" loading="lazy">
       </div>
     </section>
 
