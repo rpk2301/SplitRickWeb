@@ -1,0 +1,130 @@
+<!doctype html>
+<!--
+  OG card source — renders to a 1200×630 PNG used as og:image on
+  r.html (receipt invite). NOT deployed publicly; kept in the repo so the design
+  is version-controlled and easy to re-export.
+
+  Headless Chrome at --window-size=1200,630 clips the footer for
+  reasons that aren't obvious (viewport vs. body flex sizing). Work
+  around it by rendering at 1200×1000 and cropping the top 630 with
+  a tiny Swift helper. From repo root:
+
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+      --headless --disable-gpu --hide-scrollbars \
+      --screenshot=/tmp/og-large.png \
+      --window-size=1200,1000 \
+      "file://$PWD/og-invite.html"
+
+    swift - <<'EOF'
+    import Foundation
+    import AppKit
+    let src = NSImage(contentsOfFile: "/tmp/og-large.png")!
+    let rep = src.representations.first as! NSBitmapImageRep
+    let cropped = rep.cgImage!.cropping(
+        to: CGRect(x: 0, y: 0, width: 1200, height: 630))!
+    let data = NSBitmapImageRep(cgImage: cropped)
+        .representation(using: .png, properties: [:])!
+    try! data.write(to: URL(fileURLWithPath: "public/og-receipt.png"))
+    EOF
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1200px;
+      height: 630px;
+      min-height: 630px;
+      max-height: 630px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+                   'Segoe UI', Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #E8E4D9;
+    }
+    body {
+      /* Layered radial gradients. The terracotta highlight uses a
+         deeper rust base (#A64A2E) layered under the brighter #E07856
+         so the mid-fade reads as warm earth rather than washing into
+         bright orange. Teal wash in the bottom-left balances it. */
+      background:
+        radial-gradient(900px 600px at 82% 12%, rgba(224,120,86,.35), transparent 55%),
+        radial-gradient(1200px 800px at 82% 12%, rgba(166,74,46,.55), transparent 65%),
+        radial-gradient(1100px 700px at 10% 100%, rgba(15,61,62,.85), transparent 60%),
+        #0C1413;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Hero takes all remaining space above the footer */
+    .hero {
+      height: 530px;
+      flex: 0 0 530px;
+      display: flex;
+      align-items: center;
+      gap: 52px;
+      padding: 0 96px;
+      box-sizing: border-box;
+    }
+    .logo-img {
+      width: 280px;
+      height: 280px;
+      flex-shrink: 0;
+      object-fit: contain;
+      border-radius: 64px;
+      /* Cyan-blue drop-shadow — same hue family as the GroupsTab hero
+         card (#0F3D3E deep petrol teal) but bright enough to read as
+         a glow on the dark gradient background. #06B6D4 is the cyan
+         stop already used in the iOS Join Group button gradient, so
+         this stays on-brand without introducing a new color. */
+      filter: drop-shadow(0 20px 60px rgba(6, 182, 212, 0.5));
+    }
+    h1 {
+      margin: 0;
+      font-size: 68px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: #E8E4D9;
+    }
+    h1 .accent {
+      color: #E07856;
+    }
+    /* Footer pinned at the bottom of the flex column. Centered
+       wordmark anchors the card's bottom edge visually so the PNG
+       ends on intentional content rather than empty space. */
+    .footer {
+      flex: 0 0 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 96px;
+      box-sizing: border-box;
+      border-top: 2px solid rgba(224, 120, 86, 0.55);
+      background: rgba(224, 120, 86, 0.06);
+    }
+    .wordmark {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.20em;
+      color: #E07856;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <img class="logo-img" src="public/splitrick.png" alt="SplitRick">
+    <h1>You've been <span class="accent">invited</span><br>to split a receipt!</h1>
+  </div>
+  <div class="footer">
+    <div class="wordmark">SplitRick</div>
+  </div>
+</body>
+</html>
