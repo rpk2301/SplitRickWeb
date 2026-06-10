@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Claim your items on SplitRick</title>
+
+  <meta name="description" content="You've been invited to split a receipt on SplitRick.">
+  <meta name="theme-color" content="#0C1413">
+  <link rel="icon" href="/splitrick.png" type="image/png">
+
+  <!-- Open Graph for iMessage/WhatsApp/Slack rich previews -->
+  <meta property="og:site_name" content="SplitRick">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://splitrick.click/r.html">
+  <meta property="og:title" content="You've been invited to split a receipt!">
+  <meta property="og:image" content="https://splitrick.click/og-invite.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="You've been invited to split a receipt!">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="You've been invited to split a receipt!">
+  <meta name="twitter:image" content="https://splitrick.click/og-invite.png">
+
+  <style>
+    :root {
+      --bg:         #0C1413;
+      --card:       #152220;
+      --border:     #1F3330;
+      --accent:     #E07856;
+      --accent-deep:#C56340;
+      --sage:       #B5C18E;
+      --sand:       #E8E4D9;
+      --muted:      #9A948A;
+      --subtle:     #5F5A52;
+    }
+    * { box-sizing: border-box; }
+    html { height: 100%; }
+    body {
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: var(--bg);
+      color: var(--sand);
+      margin: 0;
+      min-height: 100%;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -240px; left: 50%;
+      width: 700px; height: 700px;
+      transform: translateX(-50%);
+      background: radial-gradient(closest-side, rgba(224,120,86,0.18), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    main {
+      width: 100%;
+      max-width: 440px;
+      margin: auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 36px 28px 28px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .logo {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 24px;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 12px 30px rgba(224, 120, 86, 0.28);
+    }
+    h1 {
+      font-size: clamp(22px, 6vw, 26px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0 0 8px;
+      color: var(--sand);
+    }
+    .tagline {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 28px;
+      line-height: 1.5;
+    }
+    .code-block {
+      margin: 0 0 24px;
+      padding: 18px 16px;
+      background: rgba(224,120,86,0.06);
+      border: 1px solid rgba(224,120,86,0.18);
+      border-radius: 14px;
+    }
+    .code-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin: 0 0 6px;
+    }
+    .code-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--sand);
+      margin: 0;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.08em;
+    }
+    .cta {
+      display: block;
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s ease, transform 0.08s ease;
+    }
+    .cta:hover { background: var(--accent-deep); }
+    .cta:active { transform: translateY(1px); }
+    .cta[disabled] { opacity: 0.4; pointer-events: none; }
+    .fallback {
+      margin: 16px 0 0;
+      font-size: 13px;
+      color: var(--subtle);
+    }
+    .fallback a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .fallback a:hover { color: var(--accent-deep); }
+    footer {
+      text-align: center;
+      padding: 20px 0 12px;
+      color: var(--subtle);
+      font-size: 12px;
+    }
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--sand); }
+    @media (max-width: 380px) {
+      main { padding: 28px 20px 22px; border-radius: 18px; }
+      .logo { width: 72px; height: 72px; margin-bottom: 20px; }
+      .code-block { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <img class="logo" src="splitrick.png" alt="SplitRick">
+    <h1>You're invited to split a receipt!</h1>
+    <p class="tagline">Open SplitRick to claim your items and see what you owe.</p>
+
+    <div class="code-block">
+      <p class="code-label">Receipt code</p>
+      <p class="code-value" id="codeDisplay">—</p>
+    </div>
+
+    <a class="cta" id="openAppBtn" href="#">Open in SplitRick</a>
+
+    <p class="fallback">
+      Don't have the app?
+      <a id="storeLink" href="https://apps.apple.com/us/app/splitrick/id6755793997">Download on the App Store</a>
+    </p>
+  </main>
+
+  <footer>
+    © <span id="year"></span> SplitRick · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+  </footer>
+
+  <script>
+    (function () {
+      // Receipt invite codes are 8-char alphanumeric (uppercase, unambiguous
+      // alphabet) — NOT the 6-digit group join code. Keep letters + digits.
+      const params = new URLSearchParams(location.search);
+      const code = (params.get('code') || '').replace(/[^0-9A-Za-z]/g, '').toUpperCase().slice(0, 8);
+
+      const codeEl = document.getElementById('codeDisplay');
+      const appBtn = document.getElementById('openAppBtn');
+
+      if (!code) {
+        codeEl.textContent = '—';
+        appBtn.textContent = 'Invalid invite';
+        appBtn.setAttribute('disabled', 'disabled');
+        appBtn.setAttribute('aria-disabled', 'true');
+        return;
+      }
+
+      codeEl.textContent = code;
+
+      // Custom-scheme deep link into the iOS app. If installed, iOS intercepts
+      // immediately; if not, the App Store link in .fallback is the next best
+      // destination. (When the app is installed, the Universal Link /r/<code>
+      // itself opens the app before this page even loads — see AASA paths.)
+      appBtn.href = 'splitrick://receipt/' + encodeURIComponent(code);
+
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
