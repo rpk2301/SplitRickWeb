@@ -211,7 +211,10 @@
       // immediately; if not, the App Store link in .fallback is the next best
       // destination. (When the app is installed, the Universal Link /r/<code>
       // itself opens the app before this page even loads — see AASA paths.)
-      appBtn.href = 'splitrick://receipt/' + encodeURIComponent(code);
+      // NOTE: must be the /r/<code> CODE form — `splitrick://receipt/<x>`
+      // is the by-ID form, and the app would look up a receipt whose ID
+      // equals the invite code (and find nothing).
+      appBtn.href = 'splitrick://r/' + encodeURIComponent(code);
 
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
