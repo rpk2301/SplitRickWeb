@@ -63,17 +63,6 @@
     }
     .squiggle { display: block; margin: 0 auto 14px; }
     p { margin: 0 0 22px; color: var(--muted); }
-    .code {
-      display: inline-block;
-      margin: 0 0 22px;
-      padding: 12px 20px;
-      background: #fff;
-      border: 2.5px solid var(--ink);
-      border-radius: 16px;
-      box-shadow: 4px 5px 0 var(--ink);
-    }
-    .code small { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-    .code strong { font-size: 34px; font-weight: 900; letter-spacing: .18em; }
     .cta {
       display: block;
       padding: 16px;
@@ -101,11 +90,6 @@
     </svg>
     <p>You're invited to a game of Ricasso: one person draws, everyone else guesses.</p>
 
-    <div class="code" id="codeBox" hidden>
-      <small>Join code</small>
-      <strong id="code"></strong>
-    </div>
-
     <a class="cta" id="open" href="ricasso://play">Open in Ricasso</a>
     <!-- Swap in the App Store link once Ricasso is published (and set storeURL in the app). -->
     <p class="soon" id="store">Don't have it yet? Ricasso is coming soon to the App Store.</p>
@@ -118,10 +102,8 @@
       var params = new URLSearchParams(location.search);
       var code = (params.get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
       if (code) {
-        document.getElementById('code').textContent = code;
-        document.getElementById('codeBox').hidden = false;
+        // The code isn't shown; the button carries it into the app.
         document.getElementById('open').href = 'ricasso://play/' + encodeURIComponent(code);
-        document.title = 'Join my Ricasso game: ' + code;
       }
     })();
   </script>
