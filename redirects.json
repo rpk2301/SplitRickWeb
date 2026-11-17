@@ -1,5 +1,11 @@
 [
     {
+      "source": "/play/<code>",
+      "target": "/play.html?code=<code>",
+      "status": "302",
+      "condition": null
+    },
+    {
       "source": "/i/<code>",
       "target": "/invite.html?code=<code>",
       "status": "302",

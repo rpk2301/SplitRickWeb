@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Join my Ricasso game</title>
+
+  <meta name="description" content="You've been invited to a Ricasso drawing game.">
+  <meta name="theme-color" content="#F6F3EC">
+  <link rel="icon" href="/ricasso.png" type="image/png">
+
+  <!-- Open Graph for iMessage/WhatsApp/Slack rich previews -->
+  <meta property="og:site_name" content="Ricasso">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Come draw with me on Ricasso!">
+  <meta property="og:description" content="Tap to join my game.">
+  <meta property="og:image" content="https://splitrick.click/og-ricasso.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A snowman doodle on a card: Come draw with me!">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Come draw with me on Ricasso!">
+  <meta name="twitter:image" content="https://splitrick.click/og-ricasso.png">
+
+  <style>
+    :root {
+      --paper: #F6F3EC;
+      --dot:   #D9D3C4;
+      --ink:   #17161A;
+      --muted: #4A4852;
+      --orange:#FF5A36;
+      --yellow:#FFD23F;
+    }
+    * { box-sizing: border-box; }
+    html { height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(env(safe-area-inset-top) + 24px) 20px calc(env(safe-area-inset-bottom) + 24px);
+      background-color: var(--paper);
+      background-image: radial-gradient(var(--dot) 1.3px, transparent 1.4px);
+      background-size: 18px 18px;
+      color: var(--ink);
+      font: 17px/1.5 ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { width: 100%; max-width: 420px; text-align: center; }
+    .icon {
+      width: 96px; height: 96px; border-radius: 22px;
+      border: 3px solid var(--ink);
+      box-shadow: 4px 5px 0 var(--ink);
+      transform: rotate(-4deg);
+    }
+    h1 {
+      margin: 22px 0 6px;
+      font-size: 40px; line-height: 1.05; font-weight: 900; letter-spacing: -0.02em;
+    }
+    .squiggle { display: block; margin: 0 auto 14px; }
+    p { margin: 0 0 22px; color: var(--muted); }
+    .code {
+      display: inline-block;
+      margin: 0 0 22px;
+      padding: 12px 20px;
+      background: #fff;
+      border: 2.5px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 4px 5px 0 var(--ink);
+    }
+    .code small { display: block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .code strong { font-size: 34px; font-weight: 900; letter-spacing: .18em; }
+    .cta {
+      display: block;
+      padding: 16px;
+      margin: 0 0 14px;
+      background: var(--orange);
+      color: var(--ink);
+      font-size: 21px; font-weight: 900;
+      text-decoration: none;
+      border: 2.5px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 4px 5px 0 var(--ink);
+    }
+    .cta:active { transform: translate(2px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+    .store { color: var(--ink); font-weight: 700; }
+    .soon { font-size: 15px; }
+    footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="icon" src="/ricasso.png" alt="Ricasso">
+    <h1>Come draw with me!</h1>
+    <svg class="squiggle" width="150" height="20" viewBox="0 0 150 20" aria-hidden="true">
+      <path d="M4 10 C 26 0, 48 20, 75 10 S 124 0, 146 10" fill="none" stroke="#FF5A36" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <p>You're invited to a game of Ricasso: one person draws, everyone else guesses.</p>
+
+    <div class="code" id="codeBox" hidden>
+      <small>Join code</small>
+      <strong id="code"></strong>
+    </div>
+
+    <a class="cta" id="open" href="ricasso://play">Open in Ricasso</a>
+    <!-- Swap in the App Store link once Ricasso is published (and set storeURL in the app). -->
+    <p class="soon" id="store">Don't have it yet? Ricasso is coming soon to the App Store.</p>
+  </main>
+  <footer>Made by Richard Kyte in Arlington, VA</footer>
+
+  <script>
+    (function () {
+      // /play/ABCDE arrives here as /play.html?code=ABCDE.
+      var params = new URLSearchParams(location.search);
+      var code = (params.get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
+      if (code) {
+        document.getElementById('code').textContent = code;
+        document.getElementById('codeBox').hidden = false;
+        document.getElementById('open').href = 'ricasso://play/' + encodeURIComponent(code);
+        document.title = 'Join my Ricasso game: ' + code;
+      }
+    })();
+  </script>
+</body>
+</html>

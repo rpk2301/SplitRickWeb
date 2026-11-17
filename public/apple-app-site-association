@@ -11,6 +11,12 @@
             "/link/*",
             "/groups/*"
           ]
+        },
+        {
+          "appID": "98Z45822HV.com.RichardKyte.Scrawl",
+          "paths": [
+            "/play/*"
+          ]
         }
       ]
     }
