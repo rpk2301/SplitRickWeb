@@ -5,7 +5,7 @@
 //
 //   swift og-ricasso.swift
 //
-// writes public/og-ricasso.png.
+// writes public/og-ricasso-2.png.
 
 import AppKit
 import SwiftUI
@@ -99,15 +99,6 @@ struct Card: View {
                     Text("Tap to join my Ricasso game")
                         .font(.system(size: 34, weight: .semibold, design: .rounded))
                         .foregroundStyle(muted)
-                    HStack(spacing: 16) {
-                        Text("Ricasso")
-                            .font(.system(size: 44, weight: .heavy, design: .rounded))
-                            .foregroundStyle(ink)
-                        Squiggle()
-                            .stroke(orange, style: StrokeStyle(lineWidth: 9, lineCap: .round))
-                            .frame(width: 150, height: 24)
-                    }
-                    .padding(.top, 12)
                 }
             }
             .padding(.horizontal, 90)
@@ -123,7 +114,7 @@ struct Card: View {
           let rep = NSBitmapImageRep(data: tiff), let png = rep.representation(using: .png, properties: [:]) else {
         fatalError("render failed")
     }
-    try! png.write(to: URL(fileURLWithPath: "public/og-ricasso.png"))
-    print("wrote public/og-ricasso.png", rep.pixelsWide, "x", rep.pixelsHigh)
+    try! png.write(to: URL(fileURLWithPath: "public/og-ricasso-2.png"))
+    print("wrote public/og-ricasso-2.png", rep.pixelsWide, "x", rep.pixelsHigh)
 }
 MainActor.assumeIsolated { render() }
