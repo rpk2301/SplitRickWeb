@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ricasso Support</title>
+  <meta name="description" content="Help with Ricasso, the drawing and guessing game: inviting friends, teams, kicking, blocking, reporting and getting in touch.">
+  <meta name="theme-color" content="#F6F3EC">
+  <link rel="icon" href="/ricasso.png" type="image/png">
+  <style>
+    :root { --paper:#F6F3EC; --dot:#D9D3C4; --ink:#17161A; --muted:#4A4852; --orange:#FF5A36; --yellow:#FFD23F; --line:#E4DFD3; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: calc(env(safe-area-inset-top) + 28px) 20px calc(env(safe-area-inset-bottom) + 40px);
+      background-color: var(--paper);
+      background-image: radial-gradient(var(--dot) 1.3px, transparent 1.4px);
+      background-size: 18px 18px;
+      color: var(--ink);
+      font: 17px/1.6 ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      max-width: 680px; margin: 0 auto; background: #fff;
+      border: 2.5px solid var(--ink); border-radius: 22px; box-shadow: 5px 6px 0 var(--ink);
+      padding: 28px 24px 32px;
+    }
+    header { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+    header img { width: 52px; height: 52px; border-radius: 12px; border: 2px solid var(--ink); }
+    h1 { font-size: 32px; line-height: 1.1; margin: 0; font-weight: 900; letter-spacing: -0.02em; }
+    .squiggle { display: block; margin: 2px 0 0; }
+    .lead { color: var(--muted); margin: 14px 0 8px; }
+    .contact {
+      display: block; margin: 18px 0 6px; padding: 16px 18px;
+      background: var(--yellow); color: var(--ink); text-decoration: none;
+      border: 2.5px solid var(--ink); border-radius: 16px; box-shadow: 4px 5px 0 var(--ink);
+      font-weight: 800; font-size: 18px;
+    }
+    .contact span { display: block; font-weight: 600; font-size: 15px; color: #2B2A30; }
+    .contact:active { transform: translate(2px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+    h2 { font-size: 21px; margin: 30px 0 4px; font-weight: 800; }
+    details { border-bottom: 1.5px solid var(--line); padding: 10px 0; }
+    summary { cursor: pointer; font-weight: 700; list-style: none; position: relative; padding-right: 28px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 4px; top: -2px; font-size: 22px; font-weight: 800; color: var(--orange); }
+    details[open] summary::after { content: "\2212"; }
+    details p, details li { color: #2B2A30; margin: 8px 0 4px; }
+    details ul { padding-left: 22px; margin: 6px 0; }
+    a { color: var(--ink); font-weight: 700; }
+    footer { max-width: 680px; margin: 22px auto 0; text-align: center; color: var(--muted); font-size: 13px; }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="/ricasso.png" alt="">
+      <div>
+        <h1>Ricasso Support</h1>
+        <svg class="squiggle" width="130" height="16" viewBox="0 0 130 16" aria-hidden="true">
+          <path d="M3 8 C 22 0, 42 16, 65 8 S 108 0, 127 8" fill="none" stroke="#FF5A36" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </header>
+
+    <p class="lead">Stuck, found a bug, or want to report something? The answers to the usual questions are below. If yours isn't here, send us a note.</p>
+
+    <a class="contact" href="mailto:SplitRickUS@gmail.com?subject=Ricasso%20support">
+      Email SplitRickUS@gmail.com
+      <span>We usually reply within a couple of days.</span>
+    </a>
+
+    <h2>Playing</h2>
+    <details>
+      <summary>How does a game work?</summary>
+      <p>Each turn, one player picks a word and draws it while everyone else types guesses. Guess faster to score more; the drawer scores when people get it. Everyone takes a turn drawing each round, and the most points at the end wins.</p>
+    </details>
+    <details>
+      <summary>How do I invite friends?</summary>
+      <p>Tap <strong>Play</strong> to start a room, then tap the <strong>Join code</strong> in the top corner to share an invite link. Friends who tap it go straight to your lobby. They can also tap <strong>Join game</strong> and type the 5-letter code.</p>
+    </details>
+    <details>
+      <summary>How many people can play?</summary>
+      <p>2 to 24 players. Rooms with more than 12 players play up to 2 rounds, so the game doesn't run all night.</p>
+    </details>
+    <details>
+      <summary>How does team mode work?</summary>
+      <p>The host turns on <strong>Team mode</strong> in the lobby. Your teammates guess first; at half time the other team can steal. Each team needs at least 2 players to start, and you can switch teams in the lobby as long as the teams stay even.</p>
+    </details>
+    <details>
+      <summary>What's the word of the day?</summary>
+      <p>A new word every day at 6 AM (US Eastern). Tap the note on the home screen to sketch it on your own, whenever you like.</p>
+    </details>
+
+    <h2>Your stuff</h2>
+    <details>
+      <summary>How do I change my name or avatar?</summary>
+      <p>Tap your name in the top corner of the home screen. You can shuffle a new face, build one in <strong>Customize</strong>, or draw your own.</p>
+    </details>
+    <details>
+      <summary>How do I save a drawing?</summary>
+      <p>At the end of a game, tap any drawing to save or share it, or tap <strong>Save all</strong>. Ricasso asks for permission to add pictures to Photos; it never looks at your library.</p>
+    </details>
+    <details>
+      <summary>I'm not getting turn alerts</summary>
+      <p>Open the iPhone <strong>Settings</strong> app, tap <strong>Notifications</strong>, then <strong>Ricasso</strong>, and turn on <strong>Allow Notifications</strong>. Alerts only arrive while you're in a game and have switched to another app.</p>
+    </details>
+    <details>
+      <summary>I lost my connection mid-game</summary>
+      <p>Ricasso reconnects on its own when your signal comes back. If you've been gone more than about a minute, the game moves on without you, but you can jump back in as long as the game is still going.</p>
+    </details>
+
+    <h2>Safety</h2>
+    <details>
+      <summary>How do I report or block someone?</summary>
+      <p>Tap the player in the lobby, or open the game menu (the round badge) and choose <strong>Report or block a player</strong>.</p>
+      <ul>
+        <li><strong>Report</strong> sends it to us to look at, with the room and turn so we can find the drawing.</li>
+        <li><strong>Block</strong> hides their drawings, guesses and avatar from you in every game. Unblock them any time in <strong>Settings</strong>, <strong>Blocked players</strong>.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>How do I remove someone from my room?</summary>
+      <p>If you're the host, tap the player in the lobby, or use the game menu during a game, and choose <strong>Kick</strong>. They can't come back to that room.</p>
+    </details>
+    <details>
+      <summary>How do I get my data removed?</summary>
+      <p>Email us with your display name and roughly when you played, and we'll remove finished games and leaderboard entries with your name. See the <a href="/ricasso/privacy.html">privacy policy</a> for what Ricasso keeps.</p>
+    </details>
+  </main>
+  <footer>
+    Ricasso, made by Richard Kyte in Arlington, VA<br>
+    <a href="/ricasso/">Ricasso home</a> &nbsp;|&nbsp; <a href="/ricasso/privacy.html">Privacy policy</a>
+  </footer>
+</body>
+</html>
